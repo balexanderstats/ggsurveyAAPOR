@@ -1,0 +1,7 @@
+require("devtools")
+devtools::install_github("balexanderstats/ggsurvey")
+require("palmerpenguins")
+require("survey")
+require("srvyr")
+install_github("jamesmartherus/anesr")
+require("knitr")
