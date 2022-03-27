@@ -1,0 +1,7 @@
+install("devtools")
+devtools::install_github("balexanderstats/ggsurvey")
+install("palmerpenguins")
+install("survey")
+install("srvyr")
+install_github("jamesmartherus/anesr")
+install("knitr")
