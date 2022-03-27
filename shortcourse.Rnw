@@ -1,0 +1,818 @@
+
+\documentclass{beamer}
+\setbeamersize{text margin left=0.25cm,text margin right=0.25cm}
+\title{Data Visualizations for Surveys Using ggplot2 \& ggsurvey}
+\author{Brittany Alexander Ph.D. \\
+Associate Statistician \\
+Ipsos Public Affairs}
+%goal ~90 slides, about 15 a week
+\usepackage{hyperref}
+\usecolortheme{beaver}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+\section{Course Objectives}
+\begin{frame}{Course Objectives}
+\begin{itemize}
+\item Learn about the Grammar of Graphics
+\item Learn how to use ggplot2 to visualize data
+\item Learn how to use ggsurvey to create weighted bar and histograms
+\item Learn how to visualize crosstabs using ggsurvey
+\item Lean how to make other plots using ggsurvey and ggplot2
+\end{itemize}
+\end{frame}
+
+
+\section{Introduction to ggplot2 and ggsurvey}
+\begin{frame}{Required Software}
+\begin{enumerate}
+\item R (version 3.3 or newer required)
+\item RStudio highly recommended
+\item ggplot2 R package
+\item dplyr R package
+\item survey \& svyr R package
+\item anesr R package
+\item ggsurvey R package
+\item palmerpenguins R package
+\end{enumerate}
+\end{frame}
+
+\section{Intro to ggplot2 and ggsurvey}
+\begin{frame}{Introducing ggplot2}
+\begin{itemize}
+\item ggplot2 is an R package created by Hadley Wickham that uses the grammar of graphics
+\item ggplot2 is a part of the tidyverse which is a collection of R packages
+\item ggplot2 is more flexible than base R plotting
+\item ggplot2 looks more modern than base R plotting
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Grammar of Graphics}
+\begin{itemize}
+\item The philosopy of ggplot2 is laid out in Wickham (2010), and builds upon previous work by Wilkinson, Anand, and Grossman (2005), and Bertin (1983).
+(1983)
+\item The grammar of graphics is a framework for visualizations to break apart the elements of a plot:
+\begin{enumerate}
+\item the data and the mapping of the aesthetic in the plot
+\item the geometric objects of a plot,  (is it a bar chart or histogram or something else)
+\item the scale of the plots
+\item the facet specification (are we making separate plots for each level of another variable)
+\end{enumerate}
+\end{itemize}
+<<echo=FALSE, warning = FALSE, message=FALSE>>=
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width = 6, fig.asp = .5, out.width = "95%", tidy = TRUE,tidy.opts=list(width.cutoff=40))
+@
+\end{frame}
+
+\begin{frame}{ggplot2 Options}
+\href{https://www.rstudio.com/resources/cheatsheets/}{Tidyverse Cheat Sheets including ggplot2}
+\href{https://ggplot2-book.org/}{ggplot2 book}
+\begin{enumerate}
+\item Plot types:  density, histogram, boxplot, bar chart, violin plot, error bars for bar plots, maps
+\item custom color schemes, add fill/color or shapes matching categorical variables
+\item custom scales or coordinate styems for continuous variables
+\item faceting to make plots for each level of a categorical variable
+\item custom labels and legends
+\end{enumerate}
+
+\end{frame}
+
+
+\begin{frame}{Dataset 1: mtcars}
+mtcars is a built in data set in R that takes data from the 1974 Motor Trend magazine with 11 variables relating to 32 automobile design and performance.  \\
+Variables: mpg (miles per gallon), cyl (number of cylinders),disp (displacement), hp (horsepower), drat (rear axle ratio), wt (weight in 1000lbs), qsec (0.25 mile time), vs (engine 0 = v-shape, 1 = straight), am (transmission (0=automatic, 1 = manual), gear (number of gears), carb (number of carburetors).
+\end{frame}
+
+\begin{frame}[fragile]{Example 1 ggplot2}
+<<message=FALSE>>=
+library(ggplot2)
+plot = ggplot(mtcars, aes(x = hp, y = mpg))+geom_point()
+plot
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Example ggplot2 add facet and title}
+<<message=FALSE>>=
+plotnew = plot + ggtitle("MPG of Car given HP by
+                         transmission") + xlab("Horse Power") + ylab("Miles Per Gallon")+facet_grid(~am)
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Example ggplot2 add facet and title}
+<<message=FALSE>>=
+plotnew
+@
+\end{frame}
+
+\begin{frame}[fragile]{Why ggsurvey}
+\begin{itemize}
+\item ggplot2 has all the necessary components to make visualizations of survey data but the code can get messy especially when handling weights or making crosstabs.
+\item ggplot2 defaults to showing categorical data via counts, but proportions are often of interest with survey data especially when making comparisons across groups of different size.
+\item ggsurvey creates functions to make common visualizations of survey data in a single function call while preserving some of the customization features in ggplot.
+\item ggsurvey retains the compatibility of ggplot2 with the rest of the tidyverse
+\item ggsurvey has functions to handle data frames (with weight as a variable) and functions that handle svy.design objects from survey package.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ggsurvey Features}
+\begin{itemize}
+\item ggsurey plot types: bar chart, histogram, boxplot, hexplot
+\item has faceting built in using 2d (one facets), 3d (two facets)
+\item uses weight argument in ggplot to handle weights
+\item ggsurvey is a series of "wrapper" functions that call ggplot or other tidyverse functions
+\item ggsurvey works with unweighted data if you add a "weight" variable that is 1 for every row
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dataset 2: apistrat from the survey package}
+The first dataset we will use is the apistrat data set from the survey package.  This a stratified sample from a data set of all California schools with various characteristics of the schools such as type of school (stype), the Academic Performance index in 1999 and 2000 (api99, api00), if a school is year round (yr.rnd), percent of parents that are high school graduates (hsg)
+<<>>=
+library(survey)
+data(api)
+library(dplyr)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
+First let's look at the base ggplot2 code needed to produce a crosstab.
+<<tidy=FALSE>>=
+newdf = apistrat %>% group_by(stype, yr.rnd)%>%
+  tally(, wt = pw) %>% mutate(f = n/sum(n))
+plotnew = ggplot(newdf, aes(yr.rnd))+
+  geom_bar(aes(weight = f))+
+  facet_grid(cols = vars(stype))
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 2B Crosstabs with ggsurvey}
+<<>>=
+library(ggsurvey)
+ggbarcrosstabs(apistrat, stype, yr.rnd, pw)
+@
+
+\end{frame}
+\section{Using ggplot2}
+\begin{frame}
+To understand the what can be done with ggsurvey, we will first look at how base ggplot2 works for non-survey data.\\
+In base ggplot2 a plot is made with at least two functions: ggplot and an appriorate geom function.  There are some geoms that are commonly used in addition to other geoms such as adding text or error bars.
+\end{frame}
+
+\begin{frame}[fragile]{Main Plot Geoms}
+
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+            & Geom function                                                                                        \\ \hline
+Bar chart   & \begin{tabular}[c]{@{}l@{}}geom\_bar (for raw data), \\ geom\_col (for frequency tables)\end{tabular} \\ \hline
+Boxplot     & geom\_boxplot                                                                                         \\ \hline
+Histogram   & geom\_histogram                                                                                       \\ \hline
+Line Plot   & geom\_line                                                                                            \\ \hline
+Scatterplot & geom\_points                                                                                          \\ \hline
+Hex plot    & geom\_hexbin (in hexbin package)                                                                      \\ \hline
+Violin plot & geom\_violin                                                                                          \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Supplemental Plot Geoms}
+\begin{table}[]
+\begin{tabular}{|l|l|}
+\hline
+                & Geom            \\ \hline
+Error bars      & geom\_errorbars \\ \hline
+Text            & geom\_text      \\ \hline
+Smoothing lines & geom\_smooth    \\ \hline
+Line            & geom\_abline    \\ \hline
+horizontal line & geom\_hline     \\ \hline
+vertical line   & geom\_vline     \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+\begin{frame}[fragile]{Dataset 3:  Palmer Penguins}
+The Palmer penguins data set details information taken from penguins on the palmer archipelago.  The variables are
+species, island, bill\_length\_mm, bill\_depth\_mm, bill\_depth\_mm, flipper\_length\_mm, body\_mass\_g, sex, year.
+<<>>=
+library(palmerpenguins)
+data(penguins)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 3: A Bar Chart}
+First let's use the ggplot and geom\_bar functions to make a bar chart of the species of penguins in the data set.
+<<>>=
+plot3 = ggplot(penguins, aes(species)) + geom_bar()
+plot3
+@
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Title customization for Example 3}
+Next let's add a title to the previous plot with ggtitle.
+<<>>=
+plot3+ggtitle("Species of Penguins")
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Label customization Part 1 for Example 3}
+Next let's add a x axis label  with  xlab adds a label to the x axis.
+<<>>=
+plot3+ggtitle("Species of Penguins")+xlab("Species")
+@
+\end{frame}
+\begin{frame}[fragile]{Label customization Part 2 for Example 3}
+Next let's add a y axis label to the previous plot with ylab.
+<<>>=
+plot3title = plot3+ggtitle("Species of Penguins")+xlab("Species")+ylab("Number of Penguins")
+plot3title
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Color customization}
+We can make the bars each a different color by passing aes(fill = Species) inside geom\_bar
+<<>>=
+ggplot(penguins, aes(species)) + geom_bar(aes(fill = species))+ggtitle("Species of Penguins")+xlab("Species")+ylab("Number of Penguins")
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Faceting}
+Faceting is a common tool to compare the the distribution of one set of variables by considering another variable. Going back to Example 1, we compared the relationship between horsepower and mpg depending on the transmission of the car using facet\_grid. Faceting helps to show the affect of a variable on multiple variables.  Crosstabs are faceted graphs comparing the distribution of a survey question given an categorical variable.
+<<message=FALSE>>=
+plotnew = plot + ggtitle("MPG of Car given HP by
+                         transmission") + xlab("Horse Power") + ylab("Miles Per Gallon")+facet_grid(~am)
+@
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
+$x~y$ means x is on the horizontal axis
+<<>>=
+plot4  = ggplot(penguins, aes(species))+geom_bar() +facet_grid(year~island)
+plot4
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid }
+<<>>=
+plot4a  = ggplot(penguins, aes(species))+geom_bar() +facet_grid(rows = vars(year), cols = vars(island))
+plot4a
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 4 Bar chart with Facet Grid text wrapping }
+<<>>=
+library(ggrepel)
+plot4+theme(axis.text.x = element_text(angle = 45, hjust = 1))
+@
+\end{frame}
+
+\begin{frame}[fragile]{Facet Wrap}
+<<>>=
+plot4  = ggplot(penguins, aes(species))+geom_bar() +facet_wrap(vars(year,island))
+plot4
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 5 Scatterplots}
+<<>>=
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))+geom_point()
+@
+
+\end{frame}
+\begin{frame}[fragile]{Example 5 with Species and Sex}
+<<>>=
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))+geom_point(aes(color = species, shape = sex))
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 6A Histograms}
+A histogram takes a continuous variable and puts it into bins and then counts the number of data points in each bin.By default geom\_histogram makes 30 evenly sized bins.
+<<>>=
+ggplot(penguins, aes(x = body_mass_g))+geom_histogram()
+@
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 6B Histograms}
+We can specify the size of the bins with binwidth. I prefer to try the default bins to get a sense of the range of the data.
+<<>>=
+ggplot(penguins, aes(x = body_mass_g))+geom_histogram(binwidth = 100)
+@
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Example 7 Boxplot}
+A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
+<<>>=
+ggplot(penguins, aes(x = flipper_length_mm)) + geom_boxplot()
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 7 Boxplot by Species}
+<<>>=
+plot7 = ggplot(penguins, aes(x = flipper_length_mm, y = species)) + geom_boxplot()
+plot7
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 7 with Title}
+<<>>=
+plot7new = plot7 + ggtitle("Boxplot of Flipper Length") + xlab("Flipper Length")  + ylab("Species")
+plot7new
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 7 with Facet for Year}
+<<>>=
+plot7new + facet_grid(~year)
+@
+\end{frame}
+\section{Using ggsurvey for bar charts}
+\begin{frame}{Introduction to ggsurvey vs ggplot}
+\begin{itemize}
+\item ggsurvey combines the ggplot+geom+facet\_grid into one function to save time
+\item For each plot type ggsurvey specifies how to do it without a facet, with one facet, and with two facets
+\item You can add ggtitle, xlab, ylab just like regular ggplot2
+\item ggsurvey is compatiable with dataframe and survey design objects (including srvyr objects)
+\item like in ggplot we don't put column names in quotes
+\item For data.frames the survey weight should a column in the data.frame
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bar Chart Functions}
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Plot type                                                             & Data type  & ggsurvey function                                   \\ \hline
+Bar Chart                                                             & data frame & ggbarweight(df, x, weights, fill)                   \\ \hline
+Bar Chart                                                             & svydesign  & ggbarweight\_svy(surveyobj, x, fill, labeller)      \\ \hline
+Crosstab                                                              & data frame & ggcrosstab(df, x, y,weights, fill)                  \\ \hline
+Crosstab                                                              & svydesign  & ggcrosstab\_svy(surveyobj, x, y, fill, labeller)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Crosstab\\ with 2\\ variables\end{tabular} & data frame & ggcrosstab3d(df, x, y,z weights, fill, labeller)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Crosstab\\ with 2\\ variables\end{tabular} & svydesign  & ggcrosstab3d\_svy(surveyobj, x,y,z, fill. labeller) \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Dataset 4: ANES}
+The American National Election Study is a large multi-mode multi-wave national survey conducted every two years with a broad range of questions related both to elections and broader policy issues. It is a collaboration between Stanford University and the University of Michigan and is funded by the National Science Foundation. It has been conducted since 1948. The population for the survey is US citizens.  \\
+\href{https://electionstudies.org/}{ANES information}
+The anesr package accesses ANES data, and we will use the 2020 time series data which has 8280 respondents.
+\end{frame}
+
+\begin{frame}[fragile]{Install and Load ANES}
+<<>>=
+#install.packages("devtools")
+#library(devtools)
+#install_github("jamesmartherus/anesr")
+library(anesr)
+data("timeseries_2020")
+timeseries_2020 = haven::as_factor(timeseries_2020)
+@
+\end{frame}
+
+
+\begin{frame}{Variables in ANES}
+We will look at the following questions in the pre-election phase:  V201114 (Right Track / Wrong Track), V201390  (Speed of Response of Federal Government to COVID-19), V201324 (State of Economy), V201151 feeling thermometer for Joe Biden, V201152 feeling thermometer for Trump. \\
+We will also consider crosstabs on the following variables  V201549x (race), V201511x (education), V201600 (gender). \\
+The relevant weight is V200010a,strata V200010d, cluster is V200010c.
+\end{frame}
+
+\begin{frame}[fragile]{Rename variables and Drop Empty Levels}
+<<>>=
+timeseries_2020$rightwrongtrack = timeseries_2020$V201114
+timeseries_2020$speedcovid = timeseries_2020$V201390
+timeseries_2020$economy = timeseries_2020$V201324
+timeseries_2020$race = timeseries_2020$V201549x
+timeseries_2020$gender = timeseries_2020$V201600
+timeseries_2020 = droplevels(timeseries_2020)
+@
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Removing Refusals on Demographics}
+To make the plots look a little cleaner we will remove individuals who refused or said didn't know about their race, education, or gender, or refused one of our questions of interest.
+<<>>=
+timeseries_2020 = timeseries_2020 %>% filter(race != "-9. Refused", race != "-8. Don't know", gender != "-9. Refused", rightwrongtrack != "-9. Refused", rightwrongtrack != "-8. Don't know", economy != "-9. Refused", speedcovid !="-9. Refused")
+timeseries_2020 = droplevels(timeseries_2020)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Creating a Survey Design Object For ANES}
+<<>>=
+library(srvyr)
+anes_survey  = svydesign(id=~V200001  , strata = ~V200010d, weights = ~V200010a, data  = timeseries_2020)
+anes_svy = as_survey(anes_survey)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 8A: ggsurvey Bar chart with Data Frame}
+<<>>=
+plot8a = ggbarweight(timeseries_2020, rightwrongtrack, V200010a )
+plot8a
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 8A: Adding titles to previous plot}
+<<>>=
+plot8a+ggtitle("Right Direction / Wrong Track")+xlab("Proportion")
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 8B: ggsurvey Bar Chart with Survey Object }
+<<>>=
+plot8b = ggbarweight_svy(anes_survey, rightwrongtrack)
+plot8b
+@
+\end{frame}
+\begin{frame}[fragile]{Example 8B: Adding titles to previous plot}
+
+<<>>=
+plot8b+ggtitle("Right Direction / Wrong Track")+xlab("Proportion")
+@
+
+\end{frame}
+
+\begin{frame}{Filtering: Advanced}
+Sometimes we don't want to include a certain category in the plot.  For instance we may want to remove the refusals from the graph. We can use the filter  function from dplyr on a data frame to remove the refusals from the plot, and then pipe operator. The pipe operator passes the object on the left of the pipe into the function on the right as the first argument. At this time this only works with data frames with survey weights.
+\end{frame}
+
+\begin{frame}[fragile]{Removing Refusals and Don't Know}
+<<>>=
+timeseries_2020 %>% filter(rightwrongtrack != "-9. Refused") %>%
+  ggbarweight(rightwrongtrack, V200010a)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 9A: Bar Chart with One Crosstab For Dataframe}
+Sometimes the text overlaps in ggplots.
+<<>>=
+ggbarcrosstabs(timeseries_2020, rightwrongtrack, gender, V200010a)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 9A: Text Wrap Labels}
+We can use the stringr package to use text wrapping for the labels on the bars.
+<<>>=
+library(stringr)
+ggbarcrosstabs(timeseries_2020, rightwrongtrack, gender, V200010a) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 9B: Bar Chart with One Crosstab For svydesign}
+
+<<>>=
+ggbarcrosstabs_svy(anes_survey, rightwrongtrack, gender)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 9B: Text Wrap Labels}
+
+<<>>=
+ggbarcrosstabs_svy(anes_survey, rightwrongtrack, gender) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+@
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 10A: Bar Chart with Two Crosstab For Dataframe}
+
+<<>>=
+ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 10A: Add Text Wrap Labels}
+
+<<>>=
+ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a, labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+@
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Example 10B: Bar chart with Two Crosstabs For svydesign}
+
+<<>>=
+ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 10B: Text Wrap Labels}
+
+<<>>=
+ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 3))
+@
+\end{frame}
+
+
+
+\section{Using ggsurvey for box plots}
+
+\begin{frame}[fragile]{Box Plots}
+A Boxplot is a way to visualize the distribution of a numeric variable such as a feeling thermometer. A boxplot highlights 5 key statistics: the minimum value, the 25th percentile, the median, the 75th percentile and the maximum value. In ggplot extreme values deemed to be outliers are marked with a dot. We will use the feeling thermometers for Joe Biden (V201151) and Donald Trump (V201152) in the 2020 ANES.
+
+
+\end{frame}
+\begin{frame}[fragile]{Process Data}
+We need to first remove the refusals and convert the factor to a numeric in the data frame.
+<<>>=
+timeseries_2020$BidenTherm = as.numeric(as.character(timeseries_2020$V201151))
+timeseries_2020$TrumpTherm = as.numeric(as.character(timeseries_2020$V201152))
+anes_svy  = anes_svy %>% mutate(BidenTherm = as.numeric(as.character(timeseries_2020$V201151)))
+anes_svy  = anes_svy %>% mutate(TrumpTherm = as.numeric(as.character(timeseries_2020$V201152)))
+@
+\end{frame}
+
+
+\begin{frame}{ggsurvey boxplot Functions}
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Plot type                                                        & Data type  & ggsurvey function                    \\ \hline
+Box Plot                                                         & data frame & ggboxweight(df, x, weights)          \\ \hline
+Box Plot                                                         & svydesign  & ggboxweight\_svy(surveyobj, x)       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Box plot \\ with 1 Facet\end{tabular} & data frame & ggboxweight2d(df, x, y,weights)      \\ \hline
+\begin{tabular}[c]{@{}l@{}}Box plot\\ with 1 Facet\end{tabular}  & svydesign  & ggboxweight2d\_svy(surveyobj, x, y)  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Box plot\\ with 2 Facets\end{tabular}  & data frame & ggboxweight3d(df, x, y,z weights)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Box plot\\ with 2 Facets\end{tabular}  & svydesign  & ggboxweight3d\_svy(surveyobj, x,y,z) \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Example 11A: Boxplot with data frame object}
+<<>>=
+ggboxweight(timeseries_2020, BidenTherm, V200010a)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 11B: Boxplot with survey design object}
+Recall that we stored the survey design object for th ANES in anes\_svy.
+<<>>=
+ggboxweight_svy(anes_svy, BidenTherm)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 12A: Boxplot with one facet with data frame object}
+<<>>=
+ggboxweight2d(timeseries_2020, BidenTherm, gender, V200010a)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 12B: Boxplot with one facet with survey design object}
+<<>>=
+ggboxweight2d_svy(anes_svy, BidenTherm, gender)+ggtitle("Biden Feeling Thermometer by Gender")
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 12A: Boxplot with two facets with data frame object}
+<<>>=
+ggboxweight3d(timeseries_2020, BidenTherm, rightwrongtrack, gender, V200010a)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 12B: Boxplot with two facets with survey design object}
+<<>>=
+ggboxweight3d_svy(anes_svy, BidenTherm,rightwrongtrack, gender)+ggtitle("Biden Feeling Thermometer by Gender")
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Base ggplot solution for 12A}
+<<>>=
+ggplot(timeseries_2020, aes(x = rightwrongtrack, y = BidenTherm))+geom_boxplot(aes(weight = V200010a))+facet_grid(rows = vars(gender))
+@
+
+\end{frame}
+
+\section{Using ggsurvey for histograms}
+\begin{frame}{Histograms in ggsurvey}
+We will work with Trump'a feeling thermometer question to make histograms. Recall that
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Plot type                                                        & Data type  & ggsurvey function                     \\ \hline
+Histogram                                                        & data frame & gghistweight(df, x, weights, binwidth)          \\ \hline
+Histogram                                                        & svydesign  & gghistweight\_svy(surveyobj, x, binwidth)       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & data frame & gghistweight2d(df, x, y,weights, binwidth)      \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & svydesign  & gghistweight2d\_svy(surveyobj, x, y, binwidth)  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & data frame & gghistweight3d(df, x, y,z weights, binwidth)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & svydesign  & gghistweight3d\_svy(surveyobj, x,y,z, binwidth) \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Example 13A: Histogram with data frame object}
+<<>>=
+gghistweight(timeseries_2020, TrumpTherm, V200010a)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 13A: Histogram with data frame object}
+Try a binwidth of 5.
+<<>>=
+gghistweight(timeseries_2020, TrumpTherm, V200010a, binwidth = 5)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 13A: Histogram with data frame object}
+Try a binwidth of 10. This is what I prefer, and will use in the next plots.
+<<>>=
+gghistweight(timeseries_2020, TrumpTherm, V200010a, binwidth = 10)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 13B: Histogram with survey design object}
+Recall that we stored the survey design object for th ANES in anes\_svy.
+<<>>=
+gghistweight_svy(anes_svy, TrumpTherm, binwidth = 10)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 14A: Histogram with one facet with data frame object}
+<<>>=
+gghistweight2d(timeseries_2020, TrumpTherm, gender, V200010a, binwidth = 10)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 14B: Histogram with one facet with survey design object}
+<<>>=
+gghistweight2d_svy(anes_svy, TrumpTherm, gender, binwidth = 10)+ggtitle("Biden Feeling Thermometer by Gender")
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 15A: Histogram with two facets with data frame object}
+<<>>=
+gghistweight3d(timeseries_2020, TrumpTherm, rightwrongtrack, gender, V200010a, binwidth = 10)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 15B: Histogram with two facets with survey design object}
+<<>>=
+gghistweight3d_svy(anes_svy, TrumpTherm,rightwrongtrack, gender, binwidth = 10)
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Base ggplot solution for 15A}
+<<>>=
+ggplot(timeseries_2020, aes(TrumpTherm))+geom_histogram(aes(weight = V200010a), binwidth = 10)+facet_grid(rows = vars(gender))
+@
+
+\end{frame}
+
+
+\section{Using ggsurvey for Hexplots}
+
+\begin{frame}[fragile]{Motivation for Hexplot}
+Sometimes you have multiple data points that overlap.  When we plot the Trump Feeling Thermometer by the Biden Feeling Thermometer we see less points than number of observations.
+<<>>=
+ggplot(timeseries_2020, aes(x = BidenTherm, y = TrumpTherm))+geom_point()
+nrow(timeseries_2020)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 16A: Hexplot}
+A hexplot creates bins of data that is close to overlapping and the intensity of shade in the bin denotes how many data points are in each bin. Ignoring survey weights this is done using the hexbin package.
+<<>>=
+library(hexbin)
+ggplot(timeseries_2020, aes(x = BidenTherm, y = TrumpTherm))+geom_hex()
+@
+
+
+\end{frame}
+
+
+\begin{frame}{Hexplot ggsurvey functions}
+\begin{table}[]
+\begin{tabular}{|l|l|l|}
+\hline
+Plot type                                                      & Data type  & ggsurvey function                    \\ \hline
+Hexplot                                                        & data frame & gghexweight(df, x, y, weights)          \\ \hline
+Hexplot                                                        & svydesign  & gghexweight\_svy(surveyobj, x, y)       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hexplot\\ with 1 Facet\end{tabular} & data frame & gghexweight2d(df, x, y, z, weights)      \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hexplot\\ with 1 Facet\end{tabular} & svydesign  & gghexweight2d\_svy(surveyobj, x, y, z)  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hexplot\\ with 2 Facet\end{tabular} & data frame & gghexweight3d(df, x, y, a, b weights)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hexplot\\ with 2 Facet\end{tabular} & svydesign  & gghexweight3d\_svy(surveyobj, x,y, a, b) \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Example 16B: Weighted Hexplot With Dataframe}
+In example 16 we did not account for the survey weights, but gghexweight does.
+<<>>=
+gghexweight(timeseries_2020, BidenTherm, TrumpTherm, weight = V200010a )
+@
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Example 16C: Using a Survey object}
+In example 16 we did not account for the survey weights, but gghexweight does.
+<<>>=
+gghexweight_svy(anes_svy, BidenTherm, TrumpTherm)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 17A: Weighted Hexplot with Facet For Data Frame}
+<<>>=
+gghexweight2d(timeseries_2020, BidenTherm, TrumpTherm, gender, weight = V200010a)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 17B: Weighted Hexplot with Facet For svydesign}
+
+<<>>=
+gghexweight2d_svy(anes_svy, BidenTherm, TrumpTherm, gender)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 18A: Weighted Hexplot with facet}
+<<>>=
+gghexweight3d(timeseries_2020, BidenTherm, TrumpTherm, gender, rightwrongtrack, weight = V200010a)
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 18B: Weighted Hexplot with facet}
+
+<<>>=
+gghexweight3d_svy(anes_svy, BidenTherm, TrumpTherm, gender, rightwrongtrack)
+@
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item ggsurvey is still in early development, and new features should be coming, including more customization for histograms
+\item Full compatibility with srvyr is in progress.
+\item In general ggsurvey is compatiable with most "add-on" functions from ggplot2 and related packages  (change color scheme, scales, titles), except geoms and facet\_grid.
+\item \href{package website to download on your machine and follow updates}{https://github.com/balexanderstats/ggsurvey}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\begin{itemize}
+\item The \href{https://electionstudies.org/}{American National Election Studies} . These materials are based on work supported by the National Science Foundation under grant numbers SES 1444721, 2014-2017, the University of Michigan, and Stanford University.
+\item Horst AM, Hill AP, Gorman KB (2020). \href{https://allisonhorst.github.io/palmerpenguins/}{palmerpenguins}: Palmer Archipelago (Antarctica) penguin data. R package version 0.1.0.
+ doi:   10.5281/zenodo.3960218.
+\item Hadley Wickham (2010) A Layered Grammar of Graphics, Journal of Computational and Graphical Statistics, 19:1, 3-28, DOI: 10.1198/jcgs.2009.07098
+
+\end{itemize}
+\end{frame}
+\end{document}
