@@ -1,4 +1,5 @@
 
+
 \documentclass{beamer}
 \setbeamersize{text margin left=0.25cm,text margin right=0.25cm}
 \title{Data Visualizations for Surveys Using ggplot2 \& ggsurvey}
@@ -7,7 +8,21 @@ Associate Statistician \\
 Ipsos Public Affairs}
 %goal ~90 slides, about 15 a week
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    pdfpagemode=FullScreen,
+    }
 \usecolortheme{beaver}
+\setbeamertemplate{footline}[frame number]
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
 \begin{document}
 \begin{frame}
 \titlepage
@@ -17,18 +32,18 @@ Ipsos Public Affairs}
 \end{frame}
 \section{Course Objectives}
 \begin{frame}{Course Objectives}
-\begin{itemize}
-\item Learn about the Grammar of Graphics
+\begin{enumerate}
+\item Learn about the Grammar of Graphics that ggplot2 uses
 \item Learn how to use ggplot2 to visualize data
 \item Learn how to use ggsurvey to create weighted bar and histograms
 \item Learn how to visualize crosstabs using ggsurvey
 \item Lean how to make other plots using ggsurvey and ggplot2
-\end{itemize}
+\end{enumerate}
 \end{frame}
 
 
 \section{Introduction to ggplot2 and ggsurvey}
-\begin{frame}{Required Software}
+\begin{frame}{Required Software (all available free)}
 \begin{enumerate}
 \item R (version 3.3 or newer required)
 \item RStudio highly recommended
@@ -70,18 +85,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width = 6, fig.asp =
 @
 \end{frame}
 
-\begin{frame}{ggplot2 Options}
-\href{https://www.rstudio.com/resources/cheatsheets/}{Tidyverse Cheat Sheets including ggplot2}
-\href{https://ggplot2-book.org/}{ggplot2 book}
-\begin{enumerate}
-\item Plot types:  density, histogram, boxplot, bar chart, violin plot, error bars for bar plots, maps
-\item custom color schemes, add fill/color or shapes matching categorical variables
-\item custom scales or coordinate styems for continuous variables
-\item faceting to make plots for each level of a categorical variable
-\item custom labels and legends
-\end{enumerate}
 
-\end{frame}
 
 
 \begin{frame}{Dataset 1: mtcars}
@@ -97,6 +101,25 @@ plot
 @
 \end{frame}
 
+\begin{frame}{ggplot2 structure from the "Cheat Sheet"}
+\href{https://www.rstudio.com/resources/cheatsheets/}{Tidyverse Cheat Sheets including ggplot2}
+\begin{figure}
+  \includegraphics[height=0.75\textheight]{ggplot2cheatsheetbasic.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}{ggplot2 Options}
+
+\href{https://ggplot2-book.org/}{ggplot2 book}
+\begin{enumerate}
+\item Plot types:  density, histogram, boxplot, bar chart, violin plot, error bars for bar plots, maps
+\item custom color schemes, add fill/color or shapes matching categorical variables
+\item custom scales or coordinate styems for continuous variables
+\item faceting to make plots for each level of a categorical variable
+\item custom labels and legends
+\end{enumerate}
+
+\end{frame}
 
 \begin{frame}[fragile]{Example ggplot2 add facet and title}
 <<message=FALSE>>=
@@ -797,12 +820,14 @@ gghexweight3d_svy(anes_svy, BidenTherm, TrumpTherm, gender, rightwrongtrack)
 
 \end{frame}
 
+
 \begin{frame}{Conclusion}
 \begin{itemize}
 \item ggsurvey is still in early development, and new features should be coming, including more customization for histograms
 \item Full compatibility with srvyr is in progress.
 \item In general ggsurvey is compatiable with most "add-on" functions from ggplot2 and related packages  (change color scheme, scales, titles), except geoms and facet\_grid.
-\item \href{package website to download on your machine and follow updates}{https://github.com/balexanderstats/ggsurvey}
+\item ggplot2 and ggsurvey provide an open source way to create high quality visualizations of complex survey data
+\item \href{https://github.com/balexanderstats/ggsurvey}{package website to download on your machine and follow updates}
 \end{itemize}
 \end{frame}
 

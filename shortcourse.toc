@@ -1,0 +1,8 @@
+\beamer@sectionintoc {1}{Course Objectives}{3}{0}{1}
+\beamer@sectionintoc {2}{Introduction to ggplot2 and ggsurvey}{5}{0}{2}
+\beamer@sectionintoc {3}{Intro to ggplot2 and ggsurvey}{7}{0}{3}
+\beamer@sectionintoc {4}{Using ggplot2}{21}{0}{4}
+\beamer@sectionintoc {5}{Using ggsurvey for bar charts}{44}{0}{5}
+\beamer@sectionintoc {6}{Using ggsurvey for box plots}{67}{0}{6}
+\beamer@sectionintoc {7}{Using ggsurvey for histograms}{78}{0}{7}
+\beamer@sectionintoc {8}{Using ggsurvey for Hexplots}{89}{0}{8}
