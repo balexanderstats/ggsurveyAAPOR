@@ -1,16 +1,15 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7380 64-bit) (preloaded format=xelatex 2021.2.23)  17 APR 2022 19:47
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.4.22)  2 MAY 2022 00:32
 entering extended mode
-**./shortcourse.tex
-(shortcourse.tex
-LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-04-06>
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamer.cls"
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**shortcourse.tex
+(./shortcourse.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2019/09/29 v3.57 A class for typesetting presentations
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasem
-odes.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/etoolbox\etoolbox.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count163
 )
@@ -18,8 +17,7 @@ Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
 \beamer@tempcount=\count164
 \c@beamerpauses=\count165
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbased
-ecode.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasedecode.sty
 \beamer@slideinframe=\count166
 \beamer@minimum=\count167
 \beamer@decode@box=\box46
@@ -27,10 +25,11 @@ ecode.sty"
 \beamer@commentbox=\box47
 \beamer@modecount=\count168
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifpdf.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
 ))
 \headdp=\dimen134
 \footheight=\dimen135
@@ -75,22 +74,18 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \beamer@sectionadjust=\count186
 \beamer@tocsectionnumber=\count187
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaseo
-ptions.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks15
+\KV@toks@=\toks14
 ))
 \beamer@paperwidth=\skip48
 \beamer@paperheight=\skip49
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/geometry\geometry.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty
-"
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
 \Gm@cnth=\count188
@@ -104,76 +99,59 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutheight=\dimen155
 \Gm@layouthoffset=\dimen156
 \Gm@layoutvoffset=\dimen157
-\Gm@dimlist=\toks16
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/xelatex/xetexconfig\geom
-etry.cfg"))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size11.clo"
+\Gm@dimlist=\toks15
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/basiclayer\pgf
-core.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
-ics.cfg"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 105.
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\xetex
-.def"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2017/06/24 v5.0h Graphics/color driver for xetex
 ))
 \Gin@req@height=\dimen158
 \Gin@req@width=\dimen159
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/systemlayer\pg
-fsys.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgfr
-cs.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
-futil-common.tex"
-\pgfutil@everybye=\toks17
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks16
 \pgfutil@tempdima=\dimen160
 \pgfutil@tempdimb=\dimen161
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
-futil-common-lists.tex"))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
-futil-latex.def"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
+ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box54
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ms\everyshi.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
-frcs.code.tex"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf\pgf.revision
-.tex")
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgfsys.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
-fkeys.code.tex"
-\pgfkeys@pathtoks=\toks18
-\pgfkeys@temptoks=\toks19
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks17
+\pgfkeys@temptoks=\toks18
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\pg
-fkeysfiltered.code.tex"
-\pgfkeys@tmptoks=\toks20
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
+ex
+\pgfkeys@tmptoks=\toks19
 ))
 \pgf@x=\dimen162
 \pgf@y=\dimen163
@@ -191,46 +169,40 @@ fkeysfiltered.code.tex"
 \c@pgf@countb=\count192
 \c@pgf@countc=\count193
 \c@pgf@countd=\count194
-\t@pgf@toka=\toks21
-\t@pgf@tokb=\toks22
-\t@pgf@tokc=\toks23
+\t@pgf@toka=\toks20
+\t@pgf@tokb=\toks21
+\t@pgf@tokc=\toks22
 \pgf@sys@id@count=\count195
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgf.cfg"
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
 )
 Driver file for pgf: pgfsys-xetex.def
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgfsys-xetex.def"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
 File: pgfsys-xetex.def 2020/01/08 v3.1.5b (3.1.5b)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgfsys-dvipdfmx.def"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
 File: pgfsys-dvipdfmx.def 2020/01/08 v3.1.5b (3.1.5b)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgfsys-common-pdf.def"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
+f
 File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
 )
 \pgfsys@objnum=\count196
 )))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgfsyssoftpath.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
+tex
 File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfsyssoftpath@smallbuffer@items=\count197
 \pgfsyssoftpath@bigbuffer@items=\count198
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer\
-pgfsysprotocol.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
+tex
 File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty"
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\color
-.cfg"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: xetex.def on input line 225.
@@ -243,51 +215,43 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcore.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-.code.tex"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-calc.code.tex"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-util.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-parser.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen172
 \pgfmath@count=\count199
 \pgfmath@box=\box55
-\pgfmath@toks=\toks24
-\pgfmath@stack@operand=\toks25
-\pgfmath@stack@operation=\toks26
+\pgfmath@toks=\toks23
+\pgfmath@stack@operand=\toks24
+\pgfmath@stack@operation=\toks25
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.code.tex"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.basic.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.trigonometric.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.random.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.comparison.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.base.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.round.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.misc.code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-functions.integerarithmetics.code.tex")))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmath
-float.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonomet
+ric.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.cod
+e.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison
+.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code
+.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.
+tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
+thmetics.code.tex)))
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count266
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfint.
-code.tex")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorepoints.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
+x
 File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@picminx=\dimen173
 \pgf@picmaxx=\dimen174
@@ -304,159 +268,138 @@ File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@zx=\dimen185
 \pgf@zy=\dimen186
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorepathconstruct.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
+code.tex
 File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@path@lastx=\dimen187
 \pgf@path@lasty=\dimen188
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorepathusage.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
+.tex
 File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@shorten@end@additional=\dimen189
 \pgf@shorten@start@additional=\dimen190
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorescopes.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
+x
 File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfpic=\box56
 \pgf@hbox=\box57
 \pgf@layerbox@main=\box58
 \pgf@picture@serial@count=\count267
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoregraphicstate.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
+ode.tex
 File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgflinewidth=\dimen191
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoretransformations.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
+s.code.tex
 File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@pt@x=\dimen192
 \pgf@pt@y=\dimen193
 \pgf@pt@temp=\dimen194
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorequick.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoreobjects.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.t
+ex
 File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorepathprocessing.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing
+.code.tex
 File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorearrows.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
+x
 File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfarrowsep=\dimen195
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoreshade.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgf@max=\dimen196
 \pgf@sys@shading@range@num=\count268
 \pgf@shadingcount=\count269
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoreimage.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoreexternal.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
+tex
 File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 \pgfexternal@startupbox=\box59
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorelayers.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
+x
 File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcoretransparency.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.c
+ode.tex
 File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorepatterns.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.
+tex
 File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\p
-gfcorerdf.code.tex"
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
 File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-)))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\xxco
-lor.sty"
+))) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty
 Package: xxcolor 2003/10/24 ver 0.1
 \XC@nummixins=\count270
 \XC@countmixins=\count271
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/atbegshi\atbegsh
-i.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty
 Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwar
-err.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.
-sty"
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperref.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexc
-mds.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode not found.
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvsetk
-eys.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvdefinekeys\kvd
-efinekeys.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pdfescape\pdfesc
-ape.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hycolor\hycolor.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/letltxmacro\letltx
-macro.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/auxhook\auxhook.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvoption
-s.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
 )
 \@linkdim=\dimen197
 \Hy@linkcounter=\count272
 \Hy@pagecounter=\count273
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.de
-f"
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/intcalc\intcalc.
-sty"
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/etexcmds\etexcmd
-s.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count274
@@ -471,19 +414,18 @@ Package hyperref Info: Backreferencing OFF on input line 4567.
 Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
 Package hyperref Info: Bookmarks ON on input line 4800.
 \c@Hy@tempcnt=\count275
- ("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5159.
 \XeTeXLinkMargin=\dimen198
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bitset\bitset.st
-y"
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bigintcalc\bigin
-tcalc.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
@@ -506,17 +448,13 @@ Package hyperref Message: Stopped early.
 
 )
 Package hyperref Info: Driver (autodetected): hxetex.
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hxetex.de
-f"
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hxetex.def
 File: hxetex.def 2020/01/14 v7.00d Hyperref driver for XeTeX
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\puenc.def
-"
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2020/01/14 v7.00d Hyperref: PDF Unicode definition (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/stringenc\string
-enc.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
@@ -526,82 +464,63 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \Fld@listcount=\count280
 \c@bookmark@seq@number=\count281
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/rerunfilecheck\rer
-unfilecheck.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/atveryend\atveryen
-d.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/atveryend/atveryend.sty
 Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/uniquecounter\un
-iquecounter.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/stringenc\se-asc
-ii-print.def"
+(/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-ascii-print.def
 File: se-ascii-print.def 2019/11/29 v1.12 stringenc: Printable ASCII characters
 
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaser
-equires.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasec
-ompatibility.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasef
-ont.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.s
-ty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaserequires.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasecompatibility.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasefont.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks27
+\@emptytoks=\toks26
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/sansmathaccent\san
-smathaccent.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.sty
 Package: sansmathaccent 2020/01/31
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/koma-script\scrlfi
-le.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2020/01/24 v3.29 KOMA-Script package (loading files)
 )))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-ranslator.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetranslator.sty
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator.sty
 Package: translator 2019-05-31 v1.12a Easy translation of strings in LaTeX
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasem
-isc.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-woscreens.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaseo
-verlay.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasemisc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetwoscreens.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty
 \beamer@argscount=\count282
 \beamer@lastskipcover=\skip50
 \beamer@trivlistdepth=\count283
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-itle.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbases
-ection.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetitle.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasesection.sty
 \c@lecture=\count284
 \c@part=\count285
 \c@section=\count286
 \c@subsection=\count287
 \c@subsubsection=\count288
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasef
-rame.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframe.sty
 \beamer@framebox=\box61
 \beamer@frametitlebox=\box62
 \beamer@zoombox=\box63
@@ -613,42 +532,33 @@ rame.sty"
 \beamer@framebottomskip=\skip52
 \beamer@frametopskipautobreak=\skip53
 \beamer@framebottomskipautobreak=\skip54
-\beamer@envbody=\toks28
+\beamer@envbody=\toks27
 \framewidth=\dimen258
 \c@framenumber=\count292
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasev
-erbatim.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty
 \beamer@verbatimfileout=\write4
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasef
-ramesize.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
 \beamer@splitbox=\box64
 \beamer@autobreakcount=\count293
 \beamer@autobreaklastheight=\dimen259
-\beamer@frametitletoks=\toks29
-\beamer@framesubtitletoks=\toks30
+\beamer@frametitletoks=\toks28
+\beamer@framesubtitletoks=\toks29
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasef
-ramecomponents.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseframecomponents.sty
 \beamer@footins=\box65
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasec
-olor.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasen
-otes.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasecolor.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenotes.sty
 \beamer@frameboxcopy=\box66
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-oc.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-emplates.sty"
-\beamer@sbttoks=\toks31
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetoc.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+\beamer@sbttoks=\toks30
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasea
-uxtemplates.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaseb
-oxes.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
 \bmb@box=\box67
 \bmb@colorbox=\box68
 \bmb@boxshadow=\box69
@@ -661,48 +571,38 @@ oxes.sty"
 )
 \beamer@blockheadheight=\dimen264
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasel
-ocalstructure.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\enumerate.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbaselocalstructure.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
 Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
-\@enLab=\toks32
+\@enLab=\toks31
 )
 \c@figure=\count294
 \c@table=\count295
 \abovecaptionskip=\skip55
 \belowcaptionskip=\skip56
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbasen
-avigation.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasenavigation.sty
 \beamer@section@min@dim=\dimen265
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-heorems.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip57
 
 For additional information on amsmath, use the `?' option.
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext.st
-y"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty
-"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks33
+\@emptytoks=\toks32
 \ex@=\dimen266
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty
-"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen267
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
-"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count296
@@ -725,123 +625,115 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 \dotsspace@=\muskip17
 \c@parentequation=\count303
 \dspbrk@lvl=\count304
-\tag@help=\toks34
+\tag@help=\toks33
 \row@=\count305
 \column@=\count306
 \maxfields@=\count307
-\andhelp@=\toks35
+\andhelp@=\toks34
 \eqnshift@=\dimen269
 \alignsep@=\dimen270
 \tagshift@=\dimen271
 \tagwidth@=\dimen272
 \totwidth@=\dimen273
 \lineht@=\dimen274
-\@envbody=\toks36
+\@envbody=\toks35
 \multlinegap=\skip58
 \multlinetaggap=\skip59
-\mathdisplay@stack=\toks37
+\mathdisplay@stack=\toks36
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amscls\amsthm.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks38
-\thm@bodyfont=\toks39
-\thm@headfont=\toks40
-\thm@notefont=\toks41
-\thm@headpunct=\toks42
+\thm@style=\toks37
+\thm@bodyfont=\toks38
+\thm@headfont=\toks39
+\thm@notefont=\toks40
+\thm@headpunct=\toks41
 \thm@preskip=\skip60
 \thm@postskip=\skip61
 \thm@headsep=\skip62
-\dth@everypar=\toks43
+\dth@everypar=\toks42
 )
 \c@theorem=\count308
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerbaset
-hemes.sty"))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamertheme
-default.sty"
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerfontt
-hemedefault.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamercolor
-themedefault.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerinner
-themedefault.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerbasethemes.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerthemedefault.sty
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerfontthemedefault.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemedefault.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerinnerthemedefault.sty
 \beamer@dima=\dimen275
 \beamer@dimb=\dimen276
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamerouter
-themedefault.sty")))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/framed\framed.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamerouterthemedefault.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip63
 \fb@frw=\dimen277
 \fb@frh=\dimen278
 \FrameRule=\dimen279
 \FrameSep=\dimen280
-) ("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\alltt.sty"
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 1997/06/16 v2.0g defines alltt environment
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 69.
+(hyperref)                removing `\\' on input line 59.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\\' on input line 69.
+(hyperref)                removing `\\' on input line 59.
 
-Package hyperref Info: Option `colorlinks' set `true' on input line 77.
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/beamer\beamercolor
-themebeaver.sty")
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/upquote\upquote.st
-y"
+Package hyperref Info: Option `colorlinks' set `true' on input line 66.
+(/usr/share/texlive/texmf-dist/tex/latex/beamer/beamercolorthemebeaver.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\textcomp.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ))
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
-d-xdvipdfmx.def"
-File: l3backend-xdvipdfmx.def 2020-03-12 L3 backend support: xdvipdfmx
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-xdvipdfmx.def
+File: l3backend-xdvipdfmx.def 2020-02-03 L3 backend support: xdvipdfmx
 \g__graphics_track_int=\count309
 \l__pdf_internal_box=\box74
 \g__pdf_backend_object_int=\count310
 \g__pdf_backend_annotation_int=\count311
-) (shortcourse.aux)
+)
+(./shortcourse.aux)
 \openout1 = `shortcourse.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 88.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 8
-8.
-
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 7
+7.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
 
-*geometry* detected driver: pdftex
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
+* driver: xetex
 * paper: custom
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
@@ -874,130 +766,128 @@ LaTeX Font Info:    ... okay on input line 88.
 
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box75
-Package hyperref Info: Link coloring ON on input line 88.
+Package hyperref Info: Link coloring ON on input line 77.
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
-ty"
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/refcount\refcount.
-sty"
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/generic/gettitlestring\g
-ettitlestring.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count312
 )
-LaTeX Info: Redefining \ref on input line 88.
-LaTeX Info: Redefining \pageref on input line 88.
-LaTeX Info: Redefining \nameref on input line 88.
- (shortcourse.out) (shortcourse.out)
+LaTeX Info: Redefining \ref on input line 77.
+LaTeX Info: Redefining \pageref on input line 77.
+LaTeX Info: Redefining \nameref on input line 77.
+
+(./shortcourse.out) (./shortcourse.out)
 \@outlinefile=\write5
 \openout5 = `shortcourse.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 88.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 77.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 88.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 77.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 88.
+(Font)                  OT1/cmss/m/n --> TU/lmr/m/n on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmss/b/n on input line 88.
+(Font)                  OT1/cmr/bx/n --> TU/lmss/b/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmss/b/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 88.
+(Font)                  OT1/cmr/bx/n --> TU/lmss/b/n on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 88.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/m/n on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 88.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/m/n on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmss/m/it on input line 88.
+(Font)                  OT1/cmr/m/it --> TU/lmss/m/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmss/m/it on input line 88.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 88.
+(Font)                  OT1/cmr/bx/it --> TU/lmss/m/it on input line 77.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 88.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 88.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 77.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  TU/lmss/m/n --> TU/lmss/b/n on input line 88.
+(Font)                  TU/lmss/m/n --> TU/lmss/b/n on input line 77.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  TU/lmss/m/it --> TU/lmss/b/it on input line 88.
+(Font)                  TU/lmss/m/it --> TU/lmss/b/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 88.
+(Font)                  OT1/cmss/b/n --> TU/lmr/b/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  TU/lmss/b/n --> TU/lmss/b/n on input line 88.
+(Font)                  TU/lmss/b/n --> TU/lmss/b/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  TU/lmss/m/n --> TU/lmss/b/n on input line 88.
+(Font)                  TU/lmss/m/n --> TU/lmss/b/n on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  TU/lmss/m/it --> TU/lmss/b/it on input line 88.
+(Font)                  TU/lmss/m/it --> TU/lmss/b/it on input line 77.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  TU/lmtt/m/n --> TU/lmtt/b/n on input line 88.
+(Font)                  TU/lmtt/m/n --> TU/lmtt/b/n on input line 77.
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor-basic-dictionary-English.dict"
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
+-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor-bibliography-dictionary-English.dict"
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-bibliography-dic
+tionary-English.dict
 Dictionary: translator-bibliography-dictionary, Language: English 
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor-environment-dictionary-English.dict"
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-environment-dict
+ionary-English.dict
 Dictionary: translator-environment-dictionary, Language: English 
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor-months-dictionary-English.dict"
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-months-dictionar
+y-English.dict
 Dictionary: translator-months-dictionary, Language: English 
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor-numbers-dictionary-English.dict"
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-numbers-dictiona
+ry-English.dict
 Dictionary: translator-numbers-dictionary, Language: English 
 )
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/translator\transla
-tor-theorem-dictionary-English.dict"
+(/usr/share/texlive/texmf-dist/tex/latex/translator/translator-theorem-dictiona
+ry-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (shortcourse.nav) [1
+) (./shortcourse.nav) [1
 
-] (shortcourse.toc)
-[2
+] (./shortcourse.toc) [2
 
-] (shortcourse.toc) [3
+]
+(./shortcourse.toc) [3
 
 ] [4
 
-] (shortcourse.toc) [5
+] [5
 
-] [6
+] (./shortcourse.toc) [6
 
-] (shortcourse.toc)
-[7
+] [7
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 130
+LaTeX Font Info:    Trying to load font information for U+msa on input line 122
 .
 
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 130
+LaTeX Font Info:    Trying to load font information for U+msb on input line 122
 .
-("C:\Users\britt\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 130.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 122.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 130.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 122.
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 130.
-[8
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 122.
+ [8
 
 ] [9
 
@@ -1006,13 +896,14 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <6> not available
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+
+(./shortcourse.vrb
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 5.
 File: figure/unnamed-chunk-2-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-2-1.pdf>
 )
-Overfull \vbox (8.5681pt too high) detected at line 168
+Overfull \vbox (8.94858pt too high) detected at line 160
  []
 
 [11
@@ -1027,12 +918,12 @@ File: ggplot2cheatsheetbasic.png Graphic file (type bmp)
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [14
+ (./shortcourse.vrb) [14
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-4-1.pdf>
 ) [15
@@ -1040,526 +931,432 @@ File: figure/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb)
-[16
+
+(./shortcourse.vrb) [16
 
 ] [17
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [18
+ (./shortcourse.vrb) [18
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [19
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-7-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-7-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-6-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-6-1.pdf>
 )
-[20
+Overfull \vbox (22.61429pt too high) detected at line 252
+ []
 
-] (shortcourse.toc) [21
-
-] [22
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb) [23
+[19
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb)
-[24
+ (./shortcourse.vrb) [20
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [25
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-8-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-8-1.pdf>
+) [21
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-9-1.pdf>
 )
-Overfull \vbox (22.1681pt too high) detected at line 340
- []
+[22
 
-[26
+] (./shortcourse.toc) [23
 
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-10-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-10-1.pdf>
-) [27
+] [24
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb) [25
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [26
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [27
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-11-1.pdf>
-) [28
+)
+Overfull \vbox (22.54858pt too high) detected at line 362
+ []
+
+[28
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-12-1.pdf>
-)
-Overfull \vbox (8.5681pt too high) detected at line 381
- []
-
-[29
+) [29
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-Overfull \hbox (17.95091pt too wide) in paragraph at lines 6--6
-[][]\TU/lmtt/b/n/10.95 ggplot[][]\TU/lmtt/m/n/10.95 (penguins,[] []\TU/lmtt/b/n
-/10.95 aes[][]\TU/lmtt/m/n/10.95 (species))[] []+[] []\TU/lmtt/b/n/10.95 geom_b
-ar[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 aes[][]\TU/lmtt/m/n/10.95 ([][
-]fill[] []= species))[] []+[][] 
- []
-
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-13-1.pdf>
+) [30
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-14-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-14-1.pdf>
 )
-Overfull \vbox (22.24477pt too high) detected at line 396
+Overfull \vbox (8.94858pt too high) detected at line 403
  []
 
-[30
+[31
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [31
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-15-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-15-1.pdf>
-)
-Overfull \vbox (8.5681pt too high) detected at line 430
- []
-
-[32
+) [32
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-16-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-16-1.pdf>
-)
-Overfull \vbox (8.5681pt too high) detected at line 444
- []
-
-[33
+ (./shortcourse.vrb) [33
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-17-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-17-1.pdf>
-) [34
+)
+[34
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-18-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-18-1.pdf>
-) [35
+ (./shortcourse.vrb) [35
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb) [36
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-19-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-19-1.pdf>
-) [36
-
-]
-\openout4 = `shortcourse.vrb'.
-
-
-(shortcourse.vrb
-File: figure/unnamed-chunk-20-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-20-1.pdf>
-) [37
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-21-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-21-1.pdf>
 )
-Overfull \vbox (22.17906pt too high) detected at line 513
+Overfull \vbox (22.54858pt too high) detected at line 474
  []
 
-[38
+[37
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-20-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-20-1.pdf>
+) [38
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [39
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-22-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-22-1.pdf>
 )
-Overfull \vbox (8.57906pt too high) detected at line 528
- []
-
-[39
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-23-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-23-1.pdf>
-)
-Overfull \vbox (8.57906pt too high) detected at line 544
- []
-
 [40
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-24-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-24-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-23-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-23-1.pdf>
 ) [41
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
+ (./shortcourse.vrb) [42
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-25-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-25-1.pdf>
-) [42
+)
+[43
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-26-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-26-1.pdf>
-) [43
-
-]
-(shortcourse.toc) [44
-
-] [45
-
-] [46
-
-] [47
+ (./shortcourse.vrb) [44
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [48
-
-] [49
-
-]
-\openout4 = `shortcourse.vrb'.
-
-
-(shortcourse.vrb) [50
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-27-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-27-1.pdf>
+) [45
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [51
+ (./shortcourse.vrb)
+[46
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb) [52
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-29-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-29-1.pdf>
+) [47
 
 ]
 \openout4 = `shortcourse.vrb'.
 
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-30-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-30-1.pdf>
+)
+Overfull \vbox (22.55954pt too high) detected at line 609
+ []
 
-(shortcourse.vrb
-File: figure/unnamed-chunk-31-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-31-1.pdf>
+[48
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [49
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-32-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-32-1.pdf>
+) [50
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-33-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-33-1.pdf>
+)
+Overfull \vbox (8.95953pt too high) detected at line 651
+ []
+
+[51
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [52
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-35-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-35-1.pdf>
 ) [53
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-32-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-32-1.pdf>
-) [54
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-36-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-36-1.pdf>
+)
+[54
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-33-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-33-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-37-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-37-1.pdf>
 ) [55
 
 ]
 \openout4 = `shortcourse.vrb'.
 
-
-(shortcourse.vrb
-File: figure/unnamed-chunk-34-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-34-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-38-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-38-1.pdf>
 ) [56
 
 ] [57
 
-]
-\openout4 = `shortcourse.vrb'.
+] (./shortcourse.toc) [58
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-35-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-35-1.pdf>
-) [58
+] [59
 
-]
-\openout4 = `shortcourse.vrb'.
+] [60
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-36-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-36-1.pdf>
-) [59
+] [61
 
 ]
 \openout4 = `shortcourse.vrb'.
 
+ (./shortcourse.vrb) [62
 
-(shortcourse.vrb
-Overfull \hbox (69.68965pt too wide) in paragraph at lines 8--8
-[]    []\TU/lmtt/m/n/10.95 gender, V200010a)[] []+[] []\TU/lmtt/b/n/10.95 scale
-_x_discrete[][]\TU/lmtt/m/n/10.95 ([][]labels[] []=[] []\TU/lmtt/b/n/10.95 func
-tion[][]\TU/lmtt/m/n/10.95 ([][]x[][])[] []\TU/lmtt/b/n/10.95 str_wrap[][]\TU/l
-mtt/m/n/10.95 (x,[][] 
- []
-
-File: figure/unnamed-chunk-37-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-37-1.pdf>
-)
-Overfull \vbox (34.23512pt too high) detected at line 785
- []
-
-[60
+] [63
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-38-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-38-1.pdf>
-) [61
+ (./shortcourse.vrb) [64
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-Overfull \hbox (12.20216pt too wide) in paragraph at lines 7--7
-[]    []\TU/lmtt/m/n/10.95 gender)[] []+[] []\TU/lmtt/b/n/10.95 scale_x_discret
-e[][]\TU/lmtt/m/n/10.95 ([][]labels[] []=[] []\TU/lmtt/b/n/10.95 function[][]\T
-U/lmtt/m/n/10.95 ([][]x[][])[] []\TU/lmtt/b/n/10.95 str_wrap[][]\TU/lmtt/m/n/10
-.95 (x,[][] 
- []
 
-File: figure/unnamed-chunk-39-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-39-1.pdf>
-) [62
+(./shortcourse.vrb) [65
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-40-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-40-1.pdf>
-) [63
+ (./shortcourse.vrb) [66
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-Overfull \hbox (35.19716pt too wide) in paragraph at lines 7--7
-[]    []\TU/lmtt/m/n/10.95 economy, gender, V200010a,[] []labeller[] []=[] []\T
-U/lmtt/b/n/10.95 label_wrap_gen[][]\TU/lmtt/m/n/10.95 ([][]width[] []=[] []3[][
-],[][] 
- []
-
-
-Overfull \hbox (104.18214pt too wide) in paragraph at lines 8--8
-[]        []\TU/lmtt/m/n/10.95 multi_line[] []=[] []TRUE[][]))[] []+[] []\TU/lm
-tt/b/n/10.95 scale_x_discrete[][]\TU/lmtt/m/n/10.95 ([][]labels[] []=[] []\TU/l
-mtt/b/n/10.95 function[][]\TU/lmtt/m/n/10.95 ([][]x[][])[] []\TU/lmtt/b/n/10.95
- str_wrap[][]\TU/lmtt/m/n/10.95 (x,[][] 
- []
-
-File: figure/unnamed-chunk-41-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-41-1.pdf>
-)
-Overfull \vbox (7.03511pt too high) detected at line 842
- []
-
-[64
+ (./shortcourse.vrb) [67
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-42-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-42-1.pdf>
-) [65
+
+(./shortcourse.vrb
+File: figure/unnamed-chunk-44-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-44-1.pdf>
+) [68
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-Overfull \hbox (63.9409pt too wide) in paragraph at lines 7--7
-[]    []\TU/lmtt/m/n/10.95 economy, gender)[] []+[] []\TU/lmtt/b/n/10.95 scale_
-x_discrete[][]\TU/lmtt/m/n/10.95 ([][]labels[] []=[] []\TU/lmtt/b/n/10.95 funct
-ion[][]\TU/lmtt/m/n/10.95 ([][]x[][])[] []\TU/lmtt/b/n/10.95 str_wrap[][]\TU/lm
-tt/m/n/10.95 (x,[][] 
- []
-
-File: figure/unnamed-chunk-43-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-43-1.pdf>
-) [66
-
-] (shortcourse.toc) [67
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb) [68
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-Overfull \hbox (98.4334pt too wide) in paragraph at lines 6--6
-[][]\TU/lmtt/m/n/10.95 timeseries_2020[][]$[][]BidenTherm[] []=[] []\TU/lmtt/b/
-n/10.95 as.numeric[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 as.character[]
-[]\TU/lmtt/m/n/10.95 (timeseries_2020[][]$[][]V201151))[][] 
- []
-
-
-Overfull \hbox (98.4334pt too wide) in paragraph at lines 7--7
-[][]\TU/lmtt/m/n/10.95 timeseries_2020[][]$[][]TrumpTherm[] []=[] []\TU/lmtt/b/
-n/10.95 as.numeric[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 as.character[]
-[]\TU/lmtt/m/n/10.95 (timeseries_2020[][]$[][]V201152))[][] 
- []
-
-
-Overfull \hbox (75.4384pt too wide) in paragraph at lines 9--9
-[]    []\TU/lmtt/b/n/10.95 mutate[][]\TU/lmtt/m/n/10.95 ([][]BidenTherm[] []=[]
- []\TU/lmtt/b/n/10.95 as.numeric[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 
-as.character[][]\TU/lmtt/m/n/10.95 (timeseries_2020[][]$[][]V201151)))[][] 
- []
-
-
-Overfull \hbox (75.4384pt too wide) in paragraph at lines 11--11
-[]    []\TU/lmtt/b/n/10.95 mutate[][]\TU/lmtt/m/n/10.95 ([][]TrumpTherm[] []=[]
- []\TU/lmtt/b/n/10.95 as.numeric[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 
-as.character[][]\TU/lmtt/m/n/10.95 (timeseries_2020[][]$[][]V201152)))[][] 
+ (./shortcourse.vrb
+Overfull \hbox (23.69966pt too wide) in paragraph at lines 5--5
+[][]\TU/lmtt/m/n/10.95 plot8atitle[] []=[] []plot8a[] []+[] []\TU/lmtt/b/n/10.9
+5 ggtitle[][]\TU/lmtt/m/n/10.95 ([][]"Right Direction / Wrong Track"[][])[] []+
+[][] 
  []
 
 ) [69
 
-] [70
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-46-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-46-1.pdf>
+) [70
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-45-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-45-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-47-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-47-1.pdf>
 ) [71
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-46-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-46-1.pdf>
+ (./shortcourse.vrb
+Overfull \hbox (17.95091pt too wide) in paragraph at lines 6--6
+[][]\TU/lmtt/m/n/10.95 plot8title[] []=[] []plot8b[] []+[] []\TU/lmtt/b/n/10.95
+ ggtitle[][]\TU/lmtt/m/n/10.95 ([][]"Right Direction / Wrong Track"[][])[] []+[
+][] 
+ []
+
 ) [72
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-47-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-47-1.pdf>
-)
-[73
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-48-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-48-1.pdf>
-) [74
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
+ (./shortcourse.vrb
 File: figure/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-49-1.pdf>
-) [75
+) [73
+
+] [74
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-50-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-50-1.pdf>
+ (./shortcourse.vrb) [75
+
+]
+\openout4 = `shortcourse.vrb'.
+
+
+(./shortcourse.vrb
+File: figure/unnamed-chunk-51-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-51-1.pdf>
 ) [76
 
 ]
 \openout4 = `shortcourse.vrb'.
 
-
-(shortcourse.vrb
-Overfull \hbox (0.70467pt too wide) in paragraph at lines 6--6
-[]    []\TU/lmtt/m/n/10.95 y[] []= BidenTherm))[] []+[] []\TU/lmtt/b/n/10.95 ge
-om_boxplot[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 aes[][]\TU/lmtt/m/n/10
-.95 ([][]weight[] []= V200010a))[] []+[][] 
- []
-
-File: figure/unnamed-chunk-51-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-51-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-52-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-52-1.pdf>
 ) [77
 
-] (shortcourse.toc) [78
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [78
 
 ]
-Overfull \hbox (10.3809pt too wide) in paragraph at lines 1022--1022
- [] 
+\openout4 = `shortcourse.vrb'.
+
+
+(./shortcourse.vrb
+File: figure/unnamed-chunk-54-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-54-1.pdf>
+)
+Overfull \vbox (8.94858pt too high) detected at line 976
  []
 
 [79
@@ -1567,167 +1364,363 @@ Overfull \hbox (10.3809pt too wide) in paragraph at lines 1022--1022
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-52-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-52-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-55-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-55-1.pdf>
 ) [80
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-53-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-53-1.pdf>
-) [81
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-56-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-56-1.pdf>
+)
+Overfull \vbox (7.41559pt too high) detected at line 1004
+ []
+
+[81
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-54-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-54-1.pdf>
-) [82
+ (./shortcourse.vrb) [82
 
 ]
 \openout4 = `shortcourse.vrb'.
 
-
-(shortcourse.vrb
-File: figure/unnamed-chunk-55-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-55-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-58-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-58-1.pdf>
 ) [83
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-56-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-56-1.pdf>
+ (./shortcourse.vrb
+Overfull \hbox (104.18214pt too wide) in paragraph at lines 9--9
+[]        []\TU/lmtt/m/n/10.95 multi_line[] []=[] []TRUE[][]))[] []+[] []\TU/lm
+tt/b/n/10.95 scale_x_discrete[][]\TU/lmtt/m/n/10.95 ([][]labels[] []=[] []\TU/l
+mtt/b/n/10.95 function[][]\TU/lmtt/m/n/10.95 ([][]x[][])[] []\TU/lmtt/b/n/10.95
+ str_wrap[][]\TU/lmtt/m/n/10.95 (x,[][] 
+ []
+
 ) [84
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-Overfull \hbox (81.18715pt too wide) in paragraph at lines 6--6
-[]    []\TU/lmtt/m/n/10.95 gender,[] []binwidth[] []=[] []10[][])[] []+[] []\TU
-/lmtt/b/n/10.95 ggtitle[][]\TU/lmtt/m/n/10.95 ([][]"Biden Feeling Thermometer b
-y Gender"[][])[][] 
- []
-
-File: figure/unnamed-chunk-57-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-57-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-60-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-60-1.pdf>
 ) [85
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-58-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-58-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-61-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-61-1.pdf>
 ) [86
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-59-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-59-1.pdf>
-) [87
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-60-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-60-1.pdf>
-) [88
-
-]
-(shortcourse.toc) [89
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
-File: figure/unnamed-chunk-61-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-61-1.pdf>
-)
-Overfull \vbox (74.94196pt too high) detected at line 1165
+ (./shortcourse.vrb
+Overfull \hbox (104.18214pt too wide) in paragraph at lines 9--9
+[]        []\TU/lmtt/m/n/10.95 multi_line[] []=[] []TRUE[][]))[] []+[] []\TU/lm
+tt/b/n/10.95 scale_x_discrete[][]\TU/lmtt/m/n/10.95 ([][]labels[] []=[] []\TU/l
+mtt/b/n/10.95 function[][]\TU/lmtt/m/n/10.95 ([][]x[][])[] []\TU/lmtt/b/n/10.95
+ str_wrap[][]\TU/lmtt/m/n/10.95 (x,[][] 
  []
 
-[90
-
-]
-\openout4 = `shortcourse.vrb'.
-
- (shortcourse.vrb
 File: figure/unnamed-chunk-62-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-62-1.pdf>
 )
-Overfull \vbox (35.83382pt too high) detected at line 1181
+Overfull \vbox (21.0156pt too high) detected at line 1089
  []
 
-[91
+[87
+
+] [88
+
+] (./shortcourse.toc) [89
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [90
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb) [91
 
 ] [92
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-63-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-63-1.pdf>
-)
-Overfull \vbox (8.64476pt too high) detected at line 1211
- []
-
-[93
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-64-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-64-1.pdf>
+) [93
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-64-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-64-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-65-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-65-1.pdf>
 ) [94
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-65-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-65-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-66-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-66-1.pdf>
 ) [95
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-66-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-66-1.pdf>
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-67-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-67-1.pdf>
 ) [96
 
 ]
 \openout4 = `shortcourse.vrb'.
 
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-68-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-68-1.pdf>
+)
+Overfull \vbox (10.96275pt too high) detected at line 1199
+ []
 
-(shortcourse.vrb
-File: figure/unnamed-chunk-67-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-67-1.pdf>
-) [97
+[97
 
 ]
 \openout4 = `shortcourse.vrb'.
 
- (shortcourse.vrb
-File: figure/unnamed-chunk-68-1.pdf Graphic file (type pdf)
-<use figure/unnamed-chunk-68-1.pdf>
-) [98
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-69-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-69-1.pdf>
+)
+Overfull \vbox (10.96275pt too high) detected at line 1213
+ []
 
-] [99
+[98
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+Overfull \hbox (0.70467pt too wide) in paragraph at lines 6--6
+[]    []\TU/lmtt/m/n/10.95 y[] []= BidenTherm))[] []+[] []\TU/lmtt/b/n/10.95 ge
+om_boxplot[][]\TU/lmtt/m/n/10.95 ([][]\TU/lmtt/b/n/10.95 aes[][]\TU/lmtt/m/n/10
+.95 ([][]weight[] []= V200010a))[] []+[][] 
+ []
+
+File: figure/unnamed-chunk-70-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-70-1.pdf>
+) [99
 
 ] [100
+
+] (./shortcourse.toc) [101
+
+]
+Overfull \hbox (3.08821pt too wide) in paragraph at lines 1245--1245
+ [] 
+ []
+
+[102
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-71-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-71-1.pdf>
+) [103
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-72-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-72-1.pdf>
+) [104
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-73-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-73-1.pdf>
+)
+[105
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-74-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-74-1.pdf>
+) [106
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-75-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-75-1.pdf>
+)
+Overfull \vbox (9.3531pt too high) detected at line 1314
+ []
+
+[107
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+Overfull \hbox (81.18715pt too wide) in paragraph at lines 6--6
+[]    []\TU/lmtt/m/n/10.95 gender,[] []binwidth[] []=[] []10[][])[] []+[] []\TU
+/lmtt/b/n/10.95 ggtitle[][]\TU/lmtt/m/n/10.95 ([][]"Biden Feeling Thermometer b
+y Gender"[][])[][] 
+ []
+
+File: figure/unnamed-chunk-76-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-76-1.pdf>
+) [108
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-77-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-77-1.pdf>
+)
+Overfull \vbox (10.96275pt too high) detected at line 1341
+ []
+
+[109
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-78-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-78-1.pdf>
+) [110
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-79-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-79-1.pdf>
+) [111
+
+] [112
+
+]
+(./shortcourse.toc) [113
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-80-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-80-1.pdf>
+)
+Overfull \vbox (75.32243pt too high) detected at line 1392
+ []
+
+[114
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-81-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-81-1.pdf>
+)
+Overfull \vbox (36.2143pt too high) detected at line 1408
+ []
+
+[115
+
+] [116
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-82-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-82-1.pdf>
+)
+Overfull \vbox (9.02524pt too high) detected at line 1438
+ []
+
+[117
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-83-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-83-1.pdf>
+)
+Overfull \vbox (8.94858pt too high) detected at line 1454
+ []
+
+[118
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-84-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-84-1.pdf>
+)
+Overfull \vbox (8.16916pt too high) detected at line 1469
+ []
+
+[119
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-85-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-85-1.pdf>
+) [120
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-86-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-86-1.pdf>
+) [121
+
+]
+\openout4 = `shortcourse.vrb'.
+
+ (./shortcourse.vrb
+File: figure/unnamed-chunk-87-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-87-1.pdf>
+)
+[122
+
+] [123
+
+] [124
 
 ]
 \tf@nav=\write6
@@ -1739,22 +1732,22 @@ File: figure/unnamed-chunk-68-1.pdf Graphic file (type pdf)
 \tf@snm=\write8
 \openout8 = `shortcourse.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1307.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1307.
- (shortcourse.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1307.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1307.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1536.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1536.
+ (./shortcourse.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1536.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1536.
 
 Package rerunfilecheck Info: File `shortcourse.out' has not changed.
-(rerunfilecheck)             Checksum: CDC98D5C4DB94DED55B2D2B22D1E78E7;560.
+(rerunfilecheck)             Checksum: 58327262949134CD2DA5C489CB7D4DDA;484.
  ) 
 Here is how much of TeX's memory you used:
- 21793 strings out of 414218
- 393896 string characters out of 2898280
- 645332 words of memory out of 3000000
- 38655 multiletter control sequences out of 15000+200000
- 537455 words of font info for 56 fonts, out of 3000000 for 9000
+ 21965 strings out of 479819
+ 403533 string characters out of 5895846
+ 645995 words of memory out of 5000000
+ 38361 multiletter control sequences out of 15000+600000
+ 537455 words of font info for 56 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,15n,67p,845b,624s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 58i,15n,67p,844b,624s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on shortcourse.pdf (100 pages).
+Output written on shortcourse.pdf (124 pages).

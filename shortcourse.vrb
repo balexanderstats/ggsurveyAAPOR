@@ -3,10 +3,10 @@
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghexweight3d_svy}\hlstd{(anes_svy, BidenTherm, TrumpTherm,}
-    \hlstd{gender, rightwrongtrack)}
+\hlkwd{gghexweight3d_svy}\hlstd{(anes_svy, BidenTherm,}
+    \hlstd{TrumpTherm, gender, rightwrongtrack)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-68-1}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-87-1}
 \end{knitrout}
 

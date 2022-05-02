@@ -2,11 +2,11 @@
 
 \documentclass{beamer}
 \setbeamersize{text margin left=0.25cm,text margin right=0.25cm}
-\title{Data Visualizations for Surveys Using ggplot2 \& ggsurvey}
+\title{Data Visualizations for Surveys Using ggplot2 \& ggsurvey \\
+AAPOR 2022 Short Course}
 \author{Brittany Alexander Ph.D. \\
 Associate Statistician \\
 Ipsos Public Affairs}
-%goal ~90 slides, about 15 a week
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -41,22 +41,25 @@ Ipsos Public Affairs}
 \end{enumerate}
 \end{frame}
 
+\begin{frame}{RCloud Setup}
+Go to \href{https://rstudio.cloud/project/3797940} and create a free account. This will give you access to an R Studio project with all the course materials pre-installed.
+\end{frame}
 
 \section{Introduction to ggplot2 and ggsurvey}
 \begin{frame}{Required Software (all available free)}
 \begin{enumerate}
-\item R (version 3.3 or newer required)
+\item R (version 3.5 or newer required)
 \item RStudio highly recommended
 \item ggplot2 R package
 \item dplyr R package
-\item survey \& svyr R package
+\item survey \& srvyr R package
 \item anesr R package
 \item ggsurvey R package
 \item palmerpenguins R package
+\item stringr R package
 \end{enumerate}
 \end{frame}
 
-\section{Intro to ggplot2 and ggsurvey}
 \begin{frame}{Introducing ggplot2}
 \begin{itemize}
 \item ggplot2 is an R package created by Hadley Wickham that uses the grammar of graphics
@@ -81,7 +84,7 @@ Ipsos Public Affairs}
 \end{enumerate}
 \end{itemize}
 <<echo=FALSE, warning = FALSE, message=FALSE>>=
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width = 6, fig.asp = .5, out.width = "95%", tidy = TRUE,tidy.opts=list(width.cutoff=40))
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width = 6, fig.asp = .5, out.width = "95%",tidy.opts=list(width.cutoff=30), tidy = TRUE)
 @
 \end{frame}
 
@@ -147,7 +150,7 @@ plotnew
 
 \begin{frame}{ggsurvey Features}
 \begin{itemize}
-\item ggsurey plot types: bar chart, histogram, boxplot, hexplot
+\item ggsurvey plot types: bar chart, histogram, boxplot, hexplot
 \item has faceting built in using 2d (one facets), 3d (two facets)
 \item uses weight argument in ggplot to handle weights
 \item ggsurvey is a series of "wrapper" functions that call ggplot or other tidyverse functions
@@ -156,7 +159,7 @@ plotnew
 \end{frame}
 
 \begin{frame}[fragile]{Dataset 2: apistrat from the survey package}
-The first dataset we will use is the apistrat data set from the survey package.  This a stratified sample from a data set of all California schools with various characteristics of the schools such as type of school (stype), the Academic Performance index in 1999 and 2000 (api99, api00), if a school is year round (yr.rnd), percent of parents that are high school graduates (hsg)
+The second dataset we will use is the apistrat data set from the survey package.  This a stratified sample from a data set of all California schools with various characteristics of the schools such as type of school (stype), the Academic Performance index in 1999 and 2000 (api99, api00), if a school is year round (yr.rnd), percent of parents that are high school graduates (hsg)
 <<>>=
 library(survey)
 data(api)
@@ -165,23 +168,40 @@ library(dplyr)
 \end{frame}
 
 \begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
+By default, ggplot does not adjust for varying sample sizes across graphics which doesn't always lead to good comparisons.
+<<>>=
+ggplot(apistrat, aes(yr.rnd))+
+  geom_bar(aes(weight = pw))+
+  facet_grid(cols = vars(stype))
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
 First let's look at the base ggplot2 code needed to produce a crosstab.
-<<tidy=FALSE>>=
+<<>>=
 newdf = apistrat %>% group_by(stype, yr.rnd)%>%
   tally(, wt = pw) %>% mutate(f = n/sum(n))
-plotnew = ggplot(newdf, aes(yr.rnd))+
+plotnew = ggplot(newdf, aes(yr.rnd)) +
   geom_bar(aes(weight = f))+
   facet_grid(cols = vars(stype))
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
+First let's look at the base ggplot2 code needed to produce a crosstab.
+<<>>=
+plotnew
 @
 \end{frame}
 
 \begin{frame}[fragile]{Example 2B Crosstabs with ggsurvey}
 <<>>=
 library(ggsurvey)
-ggbarcrosstabs(apistrat, stype, yr.rnd, pw)
+ggbarcrosstabs(apistrat, yr.rnd, stype, pw)
 @
-
 \end{frame}
+
+
 \section{Using ggplot2}
 \begin{frame}
 To understand the what can be done with ggsurvey, we will first look at how base ggplot2 works for non-survey data.\\
@@ -198,7 +218,7 @@ Bar chart   & \begin{tabular}[c]{@{}l@{}}geom\_bar (for raw data), \\ geom\_col 
 Boxplot     & geom\_boxplot                                                                                         \\ \hline
 Histogram   & geom\_histogram                                                                                       \\ \hline
 Line Plot   & geom\_line                                                                                            \\ \hline
-Scatterplot & geom\_points                                                                                          \\ \hline
+Scatterplot & geom\_point                                                                                          \\ \hline
 Hex plot    & geom\_hexbin (in hexbin package)                                                                      \\ \hline
 Violin plot & geom\_violin                                                                                          \\ \hline
 \end{tabular}
@@ -223,7 +243,7 @@ vertical line   & geom\_vline     \\ \hline
 
 \begin{frame}[fragile]{Dataset 3:  Palmer Penguins}
 The Palmer penguins data set details information taken from penguins on the palmer archipelago.  The variables are
-species, island, bill\_length\_mm, bill\_depth\_mm, bill\_depth\_mm, flipper\_length\_mm, body\_mass\_g, sex, year.
+species, island, bill\_length\_mm, bill\_depth\_mm, flipper\_depth\_mm, flipper\_length\_mm, body\_mass\_g, sex, year.
 <<>>=
 library(palmerpenguins)
 data(penguins)
@@ -263,17 +283,32 @@ plot3title
 @
 \end{frame}
 
+\begin{frame}[fragile]{Label customization Part 2 for Example 3}
+Next let's add a y axis label to the previous plot with ylab.
+<<>>=
+plot3title
+@
+\end{frame}
+\begin{frame}[fragile]{Color customization}
+We can make the bars each a different color by passing aes(fill = Species) inside geom\_bar
+<<>>=
+plot3color = ggplot(penguins, aes(species)) + geom_bar(aes(fill = species))+ggtitle("Species of Penguins")+xlab("Species")+ylab("Number of Penguins")
+@
+\end{frame}
 
 \begin{frame}[fragile]{Color customization}
 We can make the bars each a different color by passing aes(fill = Species) inside geom\_bar
 <<>>=
-ggplot(penguins, aes(species)) + geom_bar(aes(fill = species))+ggtitle("Species of Penguins")+xlab("Species")+ylab("Number of Penguins")
+plot3color
 @
 \end{frame}
 
-
 \begin{frame}[fragile]{Faceting}
 Faceting is a common tool to compare the the distribution of one set of variables by considering another variable. Going back to Example 1, we compared the relationship between horsepower and mpg depending on the transmission of the car using facet\_grid. Faceting helps to show the affect of a variable on multiple variables.  Crosstabs are faceted graphs comparing the distribution of a survey question given an categorical variable.
+\end{frame}
+
+\begin{frame}[fragile]{Faceting}
+
 <<message=FALSE>>=
 plotnew = plot + ggtitle("MPG of Car given HP by
                          transmission") + xlab("Horse Power") + ylab("Miles Per Gallon")+facet_grid(~am)
@@ -281,26 +316,32 @@ plotnew = plot + ggtitle("MPG of Car given HP by
 \end{frame}
 
 
-
-
 \begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
-$x~y$ means x is on the horizontal axis
+$y~x$ means x is on the horizontal axis
 <<>>=
 plot4  = ggplot(penguins, aes(species))+geom_bar() +facet_grid(year~island)
 plot4
 @
+\end{frame}
 
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
+<<>>=
+plot4
+@
+\end{frame}
 
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
+<<>>=
+plot4a  = ggplot(penguins, aes(species))+geom_bar() +facet_grid(rows = vars(year), cols = vars(island))
+@
 \end{frame}
 
 \begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid }
 <<>>=
-plot4a  = ggplot(penguins, aes(species))+geom_bar() +facet_grid(rows = vars(year), cols = vars(island))
 plot4a
 @
 \end{frame}
-
-\begin{frame}[fragile]{Example 4 Bar chart with Facet Grid text wrapping }
+\begin{frame}[fragile]{Example 4 Bar chart text wrapping }
 <<>>=
 library(ggrepel)
 plot4+theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -308,23 +349,43 @@ plot4+theme(axis.text.x = element_text(angle = 45, hjust = 1))
 \end{frame}
 
 \begin{frame}[fragile]{Facet Wrap}
+Facet Wrap wraps the facet for when there are too many columns/rows
 <<>>=
 plot4  = ggplot(penguins, aes(species))+geom_bar() +facet_wrap(vars(year,island))
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Facet Wrap}
+<<>>=
 plot4
 @
 
 \end{frame}
 
+\begin{frame}[fragile]{Example 5 Scatterplots}
+<<>>=
+plot5 =ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))+geom_point()
+@
+
+\end{frame}
 
 \begin{frame}[fragile]{Example 5 Scatterplots}
 <<>>=
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))+geom_point()
+plot5
 @
 
 \end{frame}
 \begin{frame}[fragile]{Example 5 with Species and Sex}
 <<>>=
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))+geom_point(aes(color = species, shape = sex))
+plot5a = ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm))+geom_point(aes(color = species, shape = sex))
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 5 with Species and Sex}
+<<>>=
+plot5a
 @
 
 \end{frame}
@@ -341,16 +402,23 @@ ggplot(penguins, aes(x = body_mass_g))+geom_histogram()
 \begin{frame}[fragile]{Example 6B Histograms}
 We can specify the size of the bins with binwidth. I prefer to try the default bins to get a sense of the range of the data.
 <<>>=
-ggplot(penguins, aes(x = body_mass_g))+geom_histogram(binwidth = 100)
+plot6b =ggplot(penguins, aes(x = body_mass_g))+geom_histogram(binwidth = 200)
 @
 
 
 \end{frame}
 
 
+\begin{frame}[fragile]{Example 6B Histograms}
+We can specify the size of the bins with binwidth. I prefer to try the default bins to get a sense of the range of the data.
+<<>>=
+plot6b
+@
 
+
+\end{frame}
 \begin{frame}[fragile]{Example 7 Boxplot}
-A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
+A boxplot shows the minimum, 25th percentile, median, 75th percentile, and maximum.
 <<>>=
 ggplot(penguins, aes(x = flipper_length_mm)) + geom_boxplot()
 @
@@ -360,14 +428,26 @@ ggplot(penguins, aes(x = flipper_length_mm)) + geom_boxplot()
 \begin{frame}[fragile]{Example 7 Boxplot by Species}
 <<>>=
 plot7 = ggplot(penguins, aes(x = flipper_length_mm, y = species)) + geom_boxplot()
+@
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 7 Boxplot by Species}
+<<>>=
 plot7
+@
+
+\end{frame}
+\begin{frame}[fragile]{Example 7 with Title}
+<<>>=
+plot7new = plot7 + ggtitle("Boxplot of Flipper Length") + xlab("Flipper Length")  + ylab("Species")
+plot7new
 @
 
 \end{frame}
 
 \begin{frame}[fragile]{Example 7 with Title}
 <<>>=
-plot7new = plot7 + ggtitle("Boxplot of Flipper Length") + xlab("Flipper Length")  + ylab("Species")
 plot7new
 @
 
@@ -378,15 +458,18 @@ plot7new
 plot7new + facet_grid(~year)
 @
 \end{frame}
+
+\begin{frame}{Any Questions?}
+\end{frame}
 \section{Using ggsurvey for bar charts}
 \begin{frame}{Introduction to ggsurvey vs ggplot}
 \begin{itemize}
 \item ggsurvey combines the ggplot+geom+facet\_grid into one function to save time
 \item For each plot type ggsurvey specifies how to do it without a facet, with one facet, and with two facets
 \item You can add ggtitle, xlab, ylab just like regular ggplot2
-\item ggsurvey is compatiable with dataframe and survey design objects (including srvyr objects)
+\item ggsurvey is compatible with dataframe and survey design objects (including srvyr objects for select functions)
 \item like in ggplot we don't put column names in quotes
-\item For data.frames the survey weight should a column in the data.frame
+\item For data frames the survey weight should a column in the data frame
 \end{itemize}
 \end{frame}
 
@@ -396,8 +479,8 @@ plot7new + facet_grid(~year)
 \hline
 Plot type                                                             & Data type  & ggsurvey function                                   \\ \hline
 Bar Chart                                                             & data frame & ggbarweight(df, x, weights, fill)                   \\ \hline
-Bar Chart                                                             & svydesign  & ggbarweight\_svy(surveyobj, x, fill, labeller)      \\ \hline
-Crosstab                                                              & data frame & ggcrosstab(df, x, y,weights, fill)                  \\ \hline
+Bar Chart                                                             & svydesign  & ggbarweight\_svy(surveyobj, x, fill)      \\ \hline
+Crosstab                                                              & data frame & ggcrosstab(df, x, y,weights, fill, labeller)                  \\ \hline
 Crosstab                                                              & svydesign  & ggcrosstab\_svy(surveyobj, x, y, fill, labeller)    \\ \hline
 \begin{tabular}[c]{@{}l@{}}Crosstab\\ with 2\\ variables\end{tabular} & data frame & ggcrosstab3d(df, x, y,z weights, fill, labeller)    \\ \hline
 \begin{tabular}[c]{@{}l@{}}Crosstab\\ with 2\\ variables\end{tabular} & svydesign  & ggcrosstab3d\_svy(surveyobj, x,y,z, fill. labeller) \\ \hline
@@ -446,8 +529,12 @@ timeseries_2020 = droplevels(timeseries_2020)
 
 \begin{frame}[fragile]{Removing Refusals on Demographics}
 To make the plots look a little cleaner we will remove individuals who refused or said didn't know about their race, education, or gender, or refused one of our questions of interest.
-<<>>=
-timeseries_2020 = timeseries_2020 %>% filter(race != "-9. Refused", race != "-8. Don't know", gender != "-9. Refused", rightwrongtrack != "-9. Refused", rightwrongtrack != "-8. Don't know", economy != "-9. Refused", speedcovid !="-9. Refused")
+<<tidy=TRUE>>=
+timeseries_2020 = timeseries_2020 %>% filter(race != "-9. Refused",
+  race != "-8. Don't know", gender != "-9. Refused",
+  rightwrongtrack != "-9. Refused",
+  rightwrongtrack != "-8. Don't know",
+  economy != "-9. Refused", speedcovid !="-9. Refused")
 timeseries_2020 = droplevels(timeseries_2020)
 @
 
@@ -456,7 +543,9 @@ timeseries_2020 = droplevels(timeseries_2020)
 \begin{frame}[fragile]{Creating a Survey Design Object For ANES}
 <<>>=
 library(srvyr)
-anes_survey  = svydesign(id=~V200001  , strata = ~V200010d, weights = ~V200010a, data  = timeseries_2020)
+anes_survey  = svydesign(id=~V200001  ,
+    strata = ~V200010d, weights = ~V200010a,
+    data  = timeseries_2020)
 anes_svy = as_survey(anes_survey)
 @
 \end{frame}
@@ -464,17 +553,29 @@ anes_svy = as_survey(anes_survey)
 \begin{frame}[fragile]{Example 8A: ggsurvey Bar chart with Data Frame}
 <<>>=
 plot8a = ggbarweight(timeseries_2020, rightwrongtrack, V200010a )
+@
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Example 8A: ggsurvey Bar chart with Data Frame}
+<<>>=
 plot8a
 @
 
 \end{frame}
-
 \begin{frame}[fragile]{Example 8A: Adding titles to previous plot}
 <<>>=
-plot8a+ggtitle("Right Direction / Wrong Track")+xlab("Proportion")
+plot8atitle = plot8a + ggtitle("Right Direction / Wrong Track") + ylab("Proportion")
 @
 \end{frame}
 
+
+\begin{frame}[fragile]{Example 8A: Adding titles to previous plot}
+<<>>=
+plot8atitle
+@
+\end{frame}
 \begin{frame}[fragile]{Example 8B: ggsurvey Bar Chart with Survey Object }
 <<>>=
 plot8b = ggbarweight_svy(anes_survey, rightwrongtrack)
@@ -484,7 +585,14 @@ plot8b
 \begin{frame}[fragile]{Example 8B: Adding titles to previous plot}
 
 <<>>=
-plot8b+ggtitle("Right Direction / Wrong Track")+xlab("Proportion")
+plot8title = plot8b + ggtitle("Right Direction / Wrong Track") + xlab("Proportion")
+@
+
+\end{frame}
+\begin{frame}[fragile]{Example 8B: Adding titles to previous plot}
+
+<<>>=
+plot8title
 @
 
 \end{frame}
@@ -495,11 +603,19 @@ Sometimes we don't want to include a certain category in the plot.  For instance
 
 \begin{frame}[fragile]{Removing Refusals and Don't Know}
 <<>>=
-timeseries_2020 %>% filter(rightwrongtrack != "-9. Refused") %>%
+filterplot = timeseries_2020 %>% filter(race == "1. White, non-Hispanic") %>%
   ggbarweight(rightwrongtrack, V200010a)
 @
 
 \end{frame}
+
+\begin{frame}[fragile]{Removing Refusals and Don't Know}
+<<>>=
+filterplot
+@
+
+\end{frame}
+
 
 \begin{frame}[fragile]{Example 9A: Bar Chart with One Crosstab For Dataframe}
 Sometimes the text overlaps in ggplots.
@@ -512,10 +628,18 @@ ggbarcrosstabs(timeseries_2020, rightwrongtrack, gender, V200010a)
 We can use the stringr package to use text wrapping for the labels on the bars.
 <<>>=
 library(stringr)
-ggbarcrosstabs(timeseries_2020, rightwrongtrack, gender, V200010a) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+plot9Atext = ggbarcrosstabs(timeseries_2020, rightwrongtrack, gender, V200010a) +   scale_x_discrete(labels = function(x)
+  str_wrap(x, width = 10))
 @
 \end{frame}
 
+\begin{frame}[fragile]{Example 9A: Text Wrap Labels}
+We can use the stringr package to use text wrapping for the labels on the bars.
+<<>>=
+library(stringr)
+plot9Atext
+@
+\end{frame}
 
 \begin{frame}[fragile]{Example 9B: Bar Chart with One Crosstab For svydesign}
 
@@ -535,14 +659,28 @@ ggbarcrosstabs_svy(anes_survey, rightwrongtrack, gender) +   scale_x_discrete(la
 \begin{frame}[fragile]{Example 10A: Bar Chart with Two Crosstab For Dataframe}
 
 <<>>=
-ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a)
+plot10A = ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a)
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 10A: Bar Chart with Two Crosstab For Dataframe}
+
+<<>>=
+plot10A
 @
 \end{frame}
 
 \begin{frame}[fragile]{Example 10A: Add Text Wrap Labels}
 
 <<>>=
-ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a, labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+plot10Atext = ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a, labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+@
+\end{frame}
+
+\begin{frame}[fragile]{Example 10A: Add Text Wrap Labels}
+
+<<>>=
+plot10Atext
 @
 \end{frame}
 
@@ -559,11 +697,12 @@ ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender)
 \begin{frame}[fragile]{Example 10B: Text Wrap Labels}
 
 <<>>=
-ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 3))
+ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender, labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 3))
 @
 \end{frame}
 
-
+\begin{frame}{Any Questions?}
+\end{frame}
 
 \section{Using ggsurvey for box plots}
 
@@ -574,11 +713,15 @@ A Boxplot is a way to visualize the distribution of a numeric variable such as a
 \end{frame}
 \begin{frame}[fragile]{Process Data}
 We need to first remove the refusals and convert the factor to a numeric in the data frame.
-<<>>=
-timeseries_2020$BidenTherm = as.numeric(as.character(timeseries_2020$V201151))
-timeseries_2020$TrumpTherm = as.numeric(as.character(timeseries_2020$V201152))
-anes_svy  = anes_svy %>% mutate(BidenTherm = as.numeric(as.character(timeseries_2020$V201151)))
-anes_svy  = anes_svy %>% mutate(TrumpTherm = as.numeric(as.character(timeseries_2020$V201152)))
+<<tidy=FALSE>>=
+timeseries_2020$BidenTherm = as.numeric(as.character(
+  timeseries_2020$V201151))
+timeseries_2020$TrumpTherm = as.numeric(as.character(
+  timeseries_2020$V201152))
+anes_svy  = anes_svy %>% mutate(BidenTherm =
+as.numeric(as.character(timeseries_2020$V201151)))
+anes_svy  = anes_svy %>% mutate(TrumpTherm =
+as.numeric(as.character(timeseries_2020$V201152)))
 @
 \end{frame}
 
@@ -647,20 +790,21 @@ ggplot(timeseries_2020, aes(x = rightwrongtrack, y = BidenTherm))+geom_boxplot(a
 @
 
 \end{frame}
-
+\begin{frame}{Any Questions?}
+\end{frame}
 \section{Using ggsurvey for histograms}
 \begin{frame}{Histograms in ggsurvey}
-We will work with Trump'a feeling thermometer question to make histograms. Recall that
+We will work with Trump'a feeling thermometer question to make histograms.
 \begin{table}[]
 \begin{tabular}{|l|l|l|}
 \hline
 Plot type                                                        & Data type  & ggsurvey function                     \\ \hline
-Histogram                                                        & data frame & gghistweight(df, x, weights, binwidth)          \\ \hline
-Histogram                                                        & svydesign  & gghistweight\_svy(surveyobj, x, binwidth)       \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & data frame & gghistweight2d(df, x, y,weights, binwidth)      \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & svydesign  & gghistweight2d\_svy(surveyobj, x, y, binwidth)  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & data frame & gghistweight3d(df, x, y,z weights, binwidth)    \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & svydesign  & gghistweight3d\_svy(surveyobj, x,y,z, binwidth) \\ \hline
+Histogram                                                        & data frame & gghistweight(df,x,weights,binwidth)          \\ \hline
+Histogram                                                        & svydesign  & gghistweight\_svy(surveyobj,x,binwidth)       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & data frame & gghistweight2d(df,x,y,weights,binwidth)      \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & svydesign  & gghistweight2d\_svy(surveyobj,x,y,binwidth)  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & data frame & gghistweight3d(df,x, y,z,weights,binwidth)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & svydesign  & gghistweight3d\_svy(surveyobj,x,y,z,binwidth) \\ \hline
 \end{tabular}
 \end{table}
 \end{frame}
@@ -731,7 +875,8 @@ ggplot(timeseries_2020, aes(TrumpTherm))+geom_histogram(aes(weight = V200010a), 
 
 \end{frame}
 
-
+\begin{frame}{Any Questions?}
+\end{frame}
 \section{Using ggsurvey for Hexplots}
 
 \begin{frame}[fragile]{Motivation for Hexplot}

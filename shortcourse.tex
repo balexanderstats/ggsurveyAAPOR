@@ -1,6 +1,6 @@
 
 
-\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{xcolor}
 % maxwidth is the original width if it is less than linewidth
 % otherwise use linewidth (to make sure the graphics do not exceed the margin)
 \makeatletter
@@ -14,9 +14,6 @@
 \makeatother
 
 \definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
-\makeatletter
-\@ifundefined{AddToHook}{}{\AddToHook{package/xcolor/after}{\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}}}
-\makeatother
 \newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
 \newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
 \newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
@@ -51,23 +48,15 @@
 \definecolor{messagecolor}{rgb}{0, 0, 0}
 \definecolor{warningcolor}{rgb}{1, 0, 1}
 \definecolor{errorcolor}{rgb}{1, 0, 0}
-\makeatletter
-\@ifundefined{AddToHook}{}{\AddToHook{package/xcolor/after}{
-\definecolor{shadecolor}{rgb}{.97, .97, .97}
-\definecolor{messagecolor}{rgb}{0, 0, 0}
-\definecolor{warningcolor}{rgb}{1, 0, 1}
-\definecolor{errorcolor}{rgb}{1, 0, 0}
-}}
-\makeatother
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
 \setbeamersize{text margin left=0.25cm,text margin right=0.25cm}
-\title{Data Visualizations for Surveys Using ggplot2 \& ggsurvey}
+\title{Data Visualizations for Surveys Using ggplot2 \& ggsurvey \\
+AAPOR 2022 Short Course}
 \author{Brittany Alexander Ph.D. \\
 Associate Statistician \\
 Ipsos Public Affairs}
-%goal ~90 slides, about 15 a week
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -103,22 +92,25 @@ Ipsos Public Affairs}
 \end{enumerate}
 \end{frame}
 
+\begin{frame}{RCloud Setup}
+Go to \href{https://rstudio.cloud/project/3797940} and create a free account. This will give you access to an R Studio project with all the course materials pre-installed.
+\end{frame}
 
 \section{Introduction to ggplot2 and ggsurvey}
 \begin{frame}{Required Software (all available free)}
 \begin{enumerate}
-\item R (version 3.3 or newer required)
+\item R (version 3.5 or newer required)
 \item RStudio highly recommended
 \item ggplot2 R package
 \item dplyr R package
-\item survey \& svyr R package
+\item survey \& srvyr R package
 \item anesr R package
 \item ggsurvey R package
 \item palmerpenguins R package
+\item stringr R package
 \end{enumerate}
 \end{frame}
 
-\section{Intro to ggplot2 and ggsurvey}
 \begin{frame}{Introducing ggplot2}
 \begin{itemize}
 \item ggplot2 is an R package created by Hadley Wickham that uses the grammar of graphics
@@ -158,8 +150,8 @@ Variables: mpg (miles per gallon), cyl (number of cylinders),disp (displacement)
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggplot2)}
-\hlstd{plot} \hlkwb{=} \hlkwd{ggplot}\hlstd{(mtcars,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= hp,} \hlkwc{y} \hlstd{= mpg))} \hlopt{+}
-    \hlkwd{geom_point}\hlstd{()}
+\hlstd{plot} \hlkwb{=} \hlkwd{ggplot}\hlstd{(mtcars,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= hp,}
+    \hlkwc{y} \hlstd{= mpg))} \hlopt{+} \hlkwd{geom_point}\hlstd{()}
 \hlstd{plot}
 \end{alltt}
 \end{kframe}
@@ -224,7 +216,7 @@ Variables: mpg (miles per gallon), cyl (number of cylinders),disp (displacement)
 
 \begin{frame}{ggsurvey Features}
 \begin{itemize}
-\item ggsurey plot types: bar chart, histogram, boxplot, hexplot
+\item ggsurvey plot types: bar chart, histogram, boxplot, hexplot
 \item has faceting built in using 2d (one facets), 3d (two facets)
 \item uses weight argument in ggplot to handle weights
 \item ggsurvey is a series of "wrapper" functions that call ggplot or other tidyverse functions
@@ -233,7 +225,7 @@ Variables: mpg (miles per gallon), cyl (number of cylinders),disp (displacement)
 \end{frame}
 
 \begin{frame}[fragile]{Dataset 2: apistrat from the survey package}
-The first dataset we will use is the apistrat data set from the survey package.  This a stratified sample from a data set of all California schools with various characteristics of the schools such as type of school (stype), the Academic Performance index in 1999 and 2000 (api99, api00), if a school is year round (yr.rnd), percent of parents that are high school graduates (hsg)
+The second dataset we will use is the apistrat data set from the survey package.  This a stratified sample from a data set of all California schools with various characteristics of the schools such as type of school (stype), the Academic Performance index in 1999 and 2000 (api99, api00), if a school is year round (yr.rnd), percent of parents that are high school graduates (hsg)
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -246,17 +238,45 @@ The first dataset we will use is the apistrat data set from the survey package. 
 \end{frame}
 
 \begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
+By default, ggplot does not adjust for varying sample sizes across graphics which doesn't always lead to good comparisons.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{ggplot}\hlstd{(apistrat,} \hlkwd{aes}\hlstd{(yr.rnd))} \hlopt{+}
+    \hlkwd{geom_bar}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{weight} \hlstd{= pw))} \hlopt{+}
+    \hlkwd{facet_grid}\hlstd{(}\hlkwc{cols} \hlstd{=} \hlkwd{vars}\hlstd{(stype))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-6-1} 
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
 First let's look at the base ggplot2 code needed to produce a crosstab.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{newdf} \hlkwb{=} \hlstd{apistrat} \hlopt{%>%} \hlkwd{group_by}\hlstd{(stype, yr.rnd)}\hlopt{%>%}
-  \hlkwd{tally}\hlstd{(,} \hlkwc{wt} \hlstd{= pw)} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{f} \hlstd{= n}\hlopt{/}\hlkwd{sum}\hlstd{(n))}
-\hlstd{plotnew} \hlkwb{=} \hlkwd{ggplot}\hlstd{(newdf,} \hlkwd{aes}\hlstd{(yr.rnd))}\hlopt{+}
-  \hlkwd{geom_bar}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{weight} \hlstd{= f))}\hlopt{+}
-  \hlkwd{facet_grid}\hlstd{(}\hlkwc{cols} \hlstd{=} \hlkwd{vars}\hlstd{(stype))}
+\hlstd{newdf} \hlkwb{=} \hlstd{apistrat} \hlopt{%>%}
+    \hlkwd{group_by}\hlstd{(stype, yr.rnd)} \hlopt{%>%}
+    \hlkwd{tally}\hlstd{(,} \hlkwc{wt} \hlstd{= pw)} \hlopt{%>%}
+    \hlkwd{mutate}\hlstd{(}\hlkwc{f} \hlstd{= n}\hlopt{/}\hlkwd{sum}\hlstd{(n))}
+\hlstd{plotnew} \hlkwb{=} \hlkwd{ggplot}\hlstd{(newdf,} \hlkwd{aes}\hlstd{(yr.rnd))} \hlopt{+}
+    \hlkwd{geom_bar}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{weight} \hlstd{= f))} \hlopt{+}
+    \hlkwd{facet_grid}\hlstd{(}\hlkwc{cols} \hlstd{=} \hlkwd{vars}\hlstd{(stype))}
 \end{alltt}
 \end{kframe}
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Example 2A Crosstabs with base ggplot}
+First let's look at the base ggplot2 code needed to produce a crosstab.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plotnew}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-8-1} 
 \end{knitrout}
 \end{frame}
 
@@ -265,13 +285,15 @@ First let's look at the base ggplot2 code needed to produce a crosstab.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(ggsurvey)}
-\hlkwd{ggbarcrosstabs}\hlstd{(apistrat, stype, yr.rnd, pw)}
+\hlkwd{ggbarcrosstabs}\hlstd{(apistrat, yr.rnd,}
+    \hlstd{stype, pw)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-7-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-9-1} 
 \end{knitrout}
-
 \end{frame}
+
+
 \section{Using ggplot2}
 \begin{frame}
 To understand the what can be done with ggsurvey, we will first look at how base ggplot2 works for non-survey data.\\
@@ -288,7 +310,7 @@ Bar chart   & \begin{tabular}[c]{@{}l@{}}geom\_bar (for raw data), \\ geom\_col 
 Boxplot     & geom\_boxplot                                                                                         \\ \hline
 Histogram   & geom\_histogram                                                                                       \\ \hline
 Line Plot   & geom\_line                                                                                            \\ \hline
-Scatterplot & geom\_points                                                                                          \\ \hline
+Scatterplot & geom\_point                                                                                          \\ \hline
 Hex plot    & geom\_hexbin (in hexbin package)                                                                      \\ \hline
 Violin plot & geom\_violin                                                                                          \\ \hline
 \end{tabular}
@@ -313,7 +335,7 @@ vertical line   & geom\_vline     \\ \hline
 
 \begin{frame}[fragile]{Dataset 3:  Palmer Penguins}
 The Palmer penguins data set details information taken from penguins on the palmer archipelago.  The variables are
-species, island, bill\_length\_mm, bill\_depth\_mm, bill\_depth\_mm, flipper\_length\_mm, body\_mass\_g, sex, year.
+species, island, bill\_length\_mm, bill\_depth\_mm, flipper\_depth\_mm, flipper\_length\_mm, body\_mass\_g, sex, year.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -334,7 +356,7 @@ First let's use the ggplot and geom\_bar functions to make a bar chart of the sp
 \hlstd{plot3}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-9-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-11-1} 
 \end{knitrout}
 
 \end{frame}
@@ -349,7 +371,7 @@ Next let's add a title to the previous plot with ggtitle.
 \hlstd{plot3} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Species of Penguins"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-10-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-12-1} 
 \end{knitrout}
 \end{frame}
 
@@ -363,7 +385,7 @@ Next let's add a x axis label  with  xlab adds a label to the x axis.
     \hlkwd{xlab}\hlstd{(}\hlstr{"Species"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-11-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-13-1} 
 \end{knitrout}
 \end{frame}
 \begin{frame}[fragile]{Label customization Part 2 for Example 3}
@@ -376,28 +398,53 @@ Next let's add a y axis label to the previous plot with ylab.
 \hlstd{plot3title}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-12-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-14-1} 
 \end{knitrout}
 \end{frame}
 
+\begin{frame}[fragile]{Label customization Part 2 for Example 3}
+Next let's add a y axis label to the previous plot with ylab.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot3title}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-15-1} 
+\end{knitrout}
+\end{frame}
+\begin{frame}[fragile]{Color customization}
+We can make the bars each a different color by passing aes(fill = Species) inside geom\_bar
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot3color} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(species))} \hlopt{+}
+    \hlkwd{geom_bar}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{fill} \hlstd{= species))} \hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Species of Penguins"}\hlstd{)} \hlopt{+}
+    \hlkwd{xlab}\hlstd{(}\hlstr{"Species"}\hlstd{)} \hlopt{+} \hlkwd{ylab}\hlstd{(}\hlstr{"Number of Penguins"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
 
 \begin{frame}[fragile]{Color customization}
 We can make the bars each a different color by passing aes(fill = Species) inside geom\_bar
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(species))} \hlopt{+} \hlkwd{geom_bar}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{fill} \hlstd{= species))} \hlopt{+}
-    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Species of Penguins"}\hlstd{)} \hlopt{+} \hlkwd{xlab}\hlstd{(}\hlstr{"Species"}\hlstd{)} \hlopt{+}
-    \hlkwd{ylab}\hlstd{(}\hlstr{"Number of Penguins"}\hlstd{)}
+\hlstd{plot3color}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-13-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-17-1} 
 \end{knitrout}
 \end{frame}
 
-
 \begin{frame}[fragile]{Faceting}
 Faceting is a common tool to compare the the distribution of one set of variables by considering another variable. Going back to Example 1, we compared the relationship between horsepower and mpg depending on the transmission of the car using facet\_grid. Faceting helps to show the affect of a variable on multiple variables.  Crosstabs are faceted graphs comparing the distribution of a survey question given an categorical variable.
+\end{frame}
+
+\begin{frame}[fragile]{Faceting}
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -411,39 +458,55 @@ Faceting is a common tool to compare the the distribution of one set of variable
 \end{frame}
 
 
-
-
 \begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
-$x~y$ means x is on the horizontal axis
+$y~x$ means x is on the horizontal axis
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{plot4} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(species))} \hlopt{+}
-    \hlkwd{geom_bar}\hlstd{()} \hlopt{+} \hlkwd{facet_grid}\hlstd{(year} \hlopt{~} \hlstd{island)}
+    \hlkwd{geom_bar}\hlstd{()} \hlopt{+} \hlkwd{facet_grid}\hlstd{(year} \hlopt{~}
+    \hlstd{island)}
 \hlstd{plot4}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-15-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-19-1} 
 \end{knitrout}
-
-
 \end{frame}
 
-\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid }
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot4}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-20-1} 
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{plot4a} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(species))} \hlopt{+}
     \hlkwd{geom_bar}\hlstd{()} \hlopt{+} \hlkwd{facet_grid}\hlstd{(}\hlkwc{rows} \hlstd{=} \hlkwd{vars}\hlstd{(year),}
     \hlkwc{cols} \hlstd{=} \hlkwd{vars}\hlstd{(island))}
-\hlstd{plot4a}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-16-1} 
 \end{knitrout}
 \end{frame}
 
-\begin{frame}[fragile]{Example 4 Bar chart with Facet Grid text wrapping }
+\begin{frame}[fragile]{Example 4 Bar chart of Species with Facet Grid }
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot4a}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-22-1} 
+\end{knitrout}
+\end{frame}
+\begin{frame}[fragile]{Example 4 Bar chart text wrapping }
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -452,34 +515,56 @@ $x~y$ means x is on the horizontal axis
     \hlkwc{hjust} \hlstd{=} \hlnum{1}\hlstd{))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-17-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-23-1} 
 \end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Facet Wrap}
+Facet Wrap wraps the facet for when there are too many columns/rows
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot4} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(species))} \hlopt{+}
+    \hlkwd{geom_bar}\hlstd{()} \hlopt{+} \hlkwd{facet_wrap}\hlstd{(}\hlkwd{vars}\hlstd{(year,}
+    \hlstd{island))}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
 \end{frame}
 
 \begin{frame}[fragile]{Facet Wrap}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{plot4} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(species))} \hlopt{+}
-    \hlkwd{geom_bar}\hlstd{()} \hlopt{+} \hlkwd{facet_wrap}\hlstd{(}\hlkwd{vars}\hlstd{(year, island))}
 \hlstd{plot4}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-18-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-25-1} 
 \end{knitrout}
 
 \end{frame}
-
 
 \begin{frame}[fragile]{Example 5 Scatterplots}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= bill_length_mm,}
+\hlstd{plot5} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= bill_length_mm,}
     \hlkwc{y} \hlstd{= bill_depth_mm))} \hlopt{+} \hlkwd{geom_point}\hlstd{()}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-19-1} 
+\end{knitrout}
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 5 Scatterplots}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot5}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-27-1} 
 \end{knitrout}
 
 \end{frame}
@@ -487,12 +572,23 @@ $x~y$ means x is on the horizontal axis
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= bill_length_mm,}
+\hlstd{plot5a} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= bill_length_mm,}
     \hlkwc{y} \hlstd{= bill_depth_mm))} \hlopt{+} \hlkwd{geom_point}\hlstd{(}\hlkwd{aes}\hlstd{(}\hlkwc{color} \hlstd{= species,}
     \hlkwc{shape} \hlstd{= sex))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-20-1} 
+\end{knitrout}
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 5 with Species and Sex}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot5a}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-29-1} 
 \end{knitrout}
 
 \end{frame}
@@ -506,7 +602,7 @@ A histogram takes a continuous variable and puts it into bins and then counts th
     \hlkwd{geom_histogram}\hlstd{()}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-21-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-30-1} 
 \end{knitrout}
 
 
@@ -517,20 +613,31 @@ We can specify the size of the bins with binwidth. I prefer to try the default b
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= body_mass_g))} \hlopt{+}
-    \hlkwd{geom_histogram}\hlstd{(}\hlkwc{binwidth} \hlstd{=} \hlnum{100}\hlstd{)}
+\hlstd{plot6b} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= body_mass_g))} \hlopt{+}
+    \hlkwd{geom_histogram}\hlstd{(}\hlkwc{binwidth} \hlstd{=} \hlnum{200}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-22-1} 
 \end{knitrout}
 
 
 \end{frame}
 
 
+\begin{frame}[fragile]{Example 6B Histograms}
+We can specify the size of the bins with binwidth. I prefer to try the default bins to get a sense of the range of the data.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot6b}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-32-1} 
+\end{knitrout}
 
+
+\end{frame}
 \begin{frame}[fragile]{Example 7 Boxplot}
-A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
+A boxplot shows the minimum, 25th percentile, median, 75th percentile, and maximum.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -538,7 +645,7 @@ A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
     \hlkwd{geom_boxplot}\hlstd{()}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-23-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-33-1} 
 \end{knitrout}
 
 \end{frame}
@@ -549,14 +656,23 @@ A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
 \begin{alltt}
 \hlstd{plot7} \hlkwb{=} \hlkwd{ggplot}\hlstd{(penguins,} \hlkwd{aes}\hlstd{(}\hlkwc{x} \hlstd{= flipper_length_mm,}
     \hlkwc{y} \hlstd{= species))} \hlopt{+} \hlkwd{geom_boxplot}\hlstd{()}
-\hlstd{plot7}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-24-1} 
 \end{knitrout}
 
 \end{frame}
 
+\begin{frame}[fragile]{Example 7 Boxplot by Species}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot7}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-35-1} 
+\end{knitrout}
+
+\end{frame}
 \begin{frame}[fragile]{Example 7 with Title}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
@@ -566,7 +682,19 @@ A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
 \hlstd{plot7new}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-25-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-36-1} 
+\end{knitrout}
+
+\end{frame}
+
+\begin{frame}[fragile]{Example 7 with Title}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot7new}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-37-1} 
 \end{knitrout}
 
 \end{frame}
@@ -578,8 +706,11 @@ A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
 \hlstd{plot7new} \hlopt{+} \hlkwd{facet_grid}\hlstd{(}\hlopt{~}\hlstd{year)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-26-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-38-1} 
 \end{knitrout}
+\end{frame}
+
+\begin{frame}{Any Questions?}
 \end{frame}
 \section{Using ggsurvey for bar charts}
 \begin{frame}{Introduction to ggsurvey vs ggplot}
@@ -587,9 +718,9 @@ A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
 \item ggsurvey combines the ggplot+geom+facet\_grid into one function to save time
 \item For each plot type ggsurvey specifies how to do it without a facet, with one facet, and with two facets
 \item You can add ggtitle, xlab, ylab just like regular ggplot2
-\item ggsurvey is compatiable with dataframe and survey design objects (including srvyr objects)
+\item ggsurvey is compatible with dataframe and survey design objects (including srvyr objects for select functions)
 \item like in ggplot we don't put column names in quotes
-\item For data.frames the survey weight should a column in the data.frame
+\item For data frames the survey weight should a column in the data frame
 \end{itemize}
 \end{frame}
 
@@ -599,8 +730,8 @@ A boxplot shows the minimum, 25th percentile, median, 75th percent, and maximum.
 \hline
 Plot type                                                             & Data type  & ggsurvey function                                   \\ \hline
 Bar Chart                                                             & data frame & ggbarweight(df, x, weights, fill)                   \\ \hline
-Bar Chart                                                             & svydesign  & ggbarweight\_svy(surveyobj, x, fill, labeller)      \\ \hline
-Crosstab                                                              & data frame & ggcrosstab(df, x, y,weights, fill)                  \\ \hline
+Bar Chart                                                             & svydesign  & ggbarweight\_svy(surveyobj, x, fill)      \\ \hline
+Crosstab                                                              & data frame & ggcrosstab(df, x, y,weights, fill, labeller)                  \\ \hline
 Crosstab                                                              & svydesign  & ggcrosstab\_svy(surveyobj, x, y, fill, labeller)    \\ \hline
 \begin{tabular}[c]{@{}l@{}}Crosstab\\ with 2\\ variables\end{tabular} & data frame & ggcrosstab3d(df, x, y,z weights, fill, labeller)    \\ \hline
 \begin{tabular}[c]{@{}l@{}}Crosstab\\ with 2\\ variables\end{tabular} & svydesign  & ggcrosstab3d\_svy(surveyobj, x,y,z, fill. labeller) \\ \hline
@@ -661,12 +792,13 @@ To make the plots look a little cleaner we will remove individuals who refused o
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{timeseries_2020} \hlkwb{=} \hlstd{timeseries_2020} \hlopt{%>%}
-    \hlkwd{filter}\hlstd{(race} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{, race} \hlopt{!=}
-        \hlstr{"-8. Don't know"}\hlstd{, gender} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{,}
+    \hlkwd{filter}\hlstd{(race} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{,}
+        \hlstd{race} \hlopt{!=} \hlstr{"-8. Don't know"}\hlstd{,}
+        \hlstd{gender} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{,}
         \hlstd{rightwrongtrack} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{,}
         \hlstd{rightwrongtrack} \hlopt{!=} \hlstr{"-8. Don't know"}\hlstd{,}
-        \hlstd{economy} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{, speedcovid} \hlopt{!=}
-            \hlstr{"-9. Refused"}\hlstd{)}
+        \hlstd{economy} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{,}
+        \hlstd{speedcovid} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{)}
 \hlstd{timeseries_2020} \hlkwb{=} \hlkwd{droplevels}\hlstd{(timeseries_2020)}
 \end{alltt}
 \end{kframe}
@@ -679,8 +811,9 @@ To make the plots look a little cleaner we will remove individuals who refused o
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(srvyr)}
-\hlstd{anes_survey} \hlkwb{=} \hlkwd{svydesign}\hlstd{(}\hlkwc{id} \hlstd{=} \hlopt{~}\hlstd{V200001,} \hlkwc{strata} \hlstd{=} \hlopt{~}\hlstd{V200010d,}
-    \hlkwc{weights} \hlstd{=} \hlopt{~}\hlstd{V200010a,} \hlkwc{data} \hlstd{= timeseries_2020)}
+\hlstd{anes_survey} \hlkwb{=} \hlkwd{svydesign}\hlstd{(}\hlkwc{id} \hlstd{=} \hlopt{~}\hlstd{V200001,}
+    \hlkwc{strata} \hlstd{=} \hlopt{~}\hlstd{V200010d,} \hlkwc{weights} \hlstd{=} \hlopt{~}\hlstd{V200010a,}
+    \hlkwc{data} \hlstd{= timeseries_2020)}
 \hlstd{anes_svy} \hlkwb{=} \hlkwd{as_survey}\hlstd{(anes_survey)}
 \end{alltt}
 \end{kframe}
@@ -691,37 +824,58 @@ To make the plots look a little cleaner we will remove individuals who refused o
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{plot8a} \hlkwb{=} \hlkwd{ggbarweight}\hlstd{(timeseries_2020, rightwrongtrack,}
-    \hlstd{V200010a)}
-\hlstd{plot8a}
+\hlstd{plot8a} \hlkwb{=} \hlkwd{ggbarweight}\hlstd{(timeseries_2020,}
+    \hlstd{rightwrongtrack, V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-31-1} 
 \end{knitrout}
 
 \end{frame}
+
+
+\begin{frame}[fragile]{Example 8A: ggsurvey Bar chart with Data Frame}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot8a}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-44-1} 
+\end{knitrout}
+
+\end{frame}
+\begin{frame}[fragile]{Example 8A: Adding titles to previous plot}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot8atitle} \hlkwb{=} \hlstd{plot8a} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Right Direction / Wrong Track"}\hlstd{)} \hlopt{+}
+    \hlkwd{ylab}\hlstd{(}\hlstr{"Proportion"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
 
 \begin{frame}[fragile]{Example 8A: Adding titles to previous plot}
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{plot8a} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Right Direction / Wrong Track"}\hlstd{)} \hlopt{+}
-    \hlkwd{xlab}\hlstd{(}\hlstr{"Proportion"}\hlstd{)}
+\hlstd{plot8atitle}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-32-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-46-1} 
 \end{knitrout}
 \end{frame}
-
 \begin{frame}[fragile]{Example 8B: ggsurvey Bar Chart with Survey Object }
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{plot8b} \hlkwb{=} \hlkwd{ggbarweight_svy}\hlstd{(anes_survey, rightwrongtrack)}
+\hlstd{plot8b} \hlkwb{=} \hlkwd{ggbarweight_svy}\hlstd{(anes_survey,}
+    \hlstd{rightwrongtrack)}
 \hlstd{plot8b}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-33-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-47-1} 
 \end{knitrout}
 \end{frame}
 \begin{frame}[fragile]{Example 8B: Adding titles to previous plot}
@@ -729,11 +883,22 @@ To make the plots look a little cleaner we will remove individuals who refused o
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{plot8b} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Right Direction / Wrong Track"}\hlstd{)} \hlopt{+}
+\hlstd{plot8title} \hlkwb{=} \hlstd{plot8b} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Right Direction / Wrong Track"}\hlstd{)} \hlopt{+}
     \hlkwd{xlab}\hlstd{(}\hlstr{"Proportion"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-34-1} 
+\end{knitrout}
+
+\end{frame}
+\begin{frame}[fragile]{Example 8B: Adding titles to previous plot}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot8title}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-49-1} 
 \end{knitrout}
 
 \end{frame}
@@ -746,26 +911,39 @@ Sometimes we don't want to include a certain category in the plot.  For instance
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{timeseries_2020} \hlopt{%>%}
-    \hlkwd{filter}\hlstd{(rightwrongtrack} \hlopt{!=} \hlstr{"-9. Refused"}\hlstd{)} \hlopt{%>%}
-    \hlkwd{ggbarweight}\hlstd{(rightwrongtrack, V200010a)}
+\hlstd{filterplot} \hlkwb{=} \hlstd{timeseries_2020} \hlopt{%>%}
+    \hlkwd{filter}\hlstd{(race} \hlopt{==} \hlstr{"1. White, non-Hispanic"}\hlstd{)} \hlopt{%>%}
+    \hlkwd{ggbarweight}\hlstd{(rightwrongtrack,}
+        \hlstd{V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-35-1} 
 \end{knitrout}
 
 \end{frame}
+
+\begin{frame}[fragile]{Removing Refusals and Don't Know}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{filterplot}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-51-1} 
+\end{knitrout}
+
+\end{frame}
+
 
 \begin{frame}[fragile]{Example 9A: Bar Chart with One Crosstab For Dataframe}
 Sometimes the text overlaps in ggplots.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs}\hlstd{(timeseries_2020, rightwrongtrack,}
-    \hlstd{gender, V200010a)}
+\hlkwd{ggbarcrosstabs}\hlstd{(timeseries_2020,}
+    \hlstd{rightwrongtrack, gender, V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-36-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-52-1} 
 \end{knitrout}
 \end{frame}
 
@@ -775,26 +953,38 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlkwd{library}\hlstd{(stringr)}
-\hlkwd{ggbarcrosstabs}\hlstd{(timeseries_2020, rightwrongtrack,}
-    \hlstd{gender, V200010a)} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
-    \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
+\hlstd{plot9Atext} \hlkwb{=} \hlkwd{ggbarcrosstabs}\hlstd{(timeseries_2020,}
+    \hlstd{rightwrongtrack, gender, V200010a)} \hlopt{+}
+    \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
+        \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-37-1} 
 \end{knitrout}
 \end{frame}
 
+\begin{frame}[fragile]{Example 9A: Text Wrap Labels}
+We can use the stringr package to use text wrapping for the labels on the bars.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(stringr)}
+\hlstd{plot9Atext}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-54-1} 
+\end{knitrout}
+\end{frame}
 
 \begin{frame}[fragile]{Example 9B: Bar Chart with One Crosstab For svydesign}
 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs_svy}\hlstd{(anes_survey, rightwrongtrack,}
-    \hlstd{gender)}
+\hlkwd{ggbarcrosstabs_svy}\hlstd{(anes_survey,}
+    \hlstd{rightwrongtrack, gender)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-38-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-55-1} 
 \end{knitrout}
 \end{frame}
 
@@ -803,12 +993,13 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs_svy}\hlstd{(anes_survey, rightwrongtrack,}
-    \hlstd{gender)} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
-    \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
+\hlkwd{ggbarcrosstabs_svy}\hlstd{(anes_survey,}
+    \hlstd{rightwrongtrack, gender)} \hlopt{+}
+    \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
+        \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-39-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-56-1} 
 \end{knitrout}
 \end{frame}
 
@@ -818,11 +1009,23 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs3d}\hlstd{(timeseries_2020, rightwrongtrack,}
-    \hlstd{economy, gender, V200010a)}
+\hlstd{plot10A} \hlkwb{=} \hlkwd{ggbarcrosstabs3d}\hlstd{(timeseries_2020,}
+    \hlstd{rightwrongtrack, economy, gender,}
+    \hlstd{V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-40-1} 
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Example 10A: Bar Chart with Two Crosstab For Dataframe}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot10A}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-58-1} 
 \end{knitrout}
 \end{frame}
 
@@ -831,13 +1034,25 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs3d}\hlstd{(timeseries_2020, rightwrongtrack,}
-    \hlstd{economy, gender, V200010a,} \hlkwc{labeller} \hlstd{=} \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,}
+\hlstd{plot10Atext} \hlkwb{=} \hlkwd{ggbarcrosstabs3d}\hlstd{(timeseries_2020,}
+    \hlstd{rightwrongtrack, economy, gender,}
+    \hlstd{V200010a,} \hlkwc{labeller} \hlstd{=} \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,}
         \hlkwc{multi_line} \hlstd{=} \hlnum{TRUE}\hlstd{))} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
     \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-41-1} 
+\end{knitrout}
+\end{frame}
+
+\begin{frame}[fragile]{Example 10A: Add Text Wrap Labels}
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{plot10Atext}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-60-1} 
 \end{knitrout}
 \end{frame}
 
@@ -849,11 +1064,11 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs3d_svy}\hlstd{(anes_survey, rightwrongtrack,}
-    \hlstd{economy, gender)}
+\hlkwd{ggbarcrosstabs3d_svy}\hlstd{(anes_survey,}
+    \hlstd{rightwrongtrack, economy, gender)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-42-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-61-1} 
 \end{knitrout}
 \end{frame}
 
@@ -862,16 +1077,19 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs3d_svy}\hlstd{(anes_survey, rightwrongtrack,}
-    \hlstd{economy, gender)} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
+\hlkwd{ggbarcrosstabs3d_svy}\hlstd{(anes_survey,}
+    \hlstd{rightwrongtrack, economy, gender,}
+    \hlkwc{labeller} \hlstd{=} \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,}
+        \hlkwc{multi_line} \hlstd{=} \hlnum{TRUE}\hlstd{))} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
     \hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-43-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-62-1} 
 \end{knitrout}
 \end{frame}
 
-
+\begin{frame}{Any Questions?}
+\end{frame}
 
 \section{Using ggsurvey for box plots}
 
@@ -885,12 +1103,14 @@ We need to first remove the refusals and convert the factor to a numeric in the 
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlstd{timeseries_2020}\hlopt{$}\hlstd{BidenTherm} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(timeseries_2020}\hlopt{$}\hlstd{V201151))}
-\hlstd{timeseries_2020}\hlopt{$}\hlstd{TrumpTherm} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(timeseries_2020}\hlopt{$}\hlstd{V201152))}
-\hlstd{anes_svy} \hlkwb{=} \hlstd{anes_svy} \hlopt{%>%}
-    \hlkwd{mutate}\hlstd{(}\hlkwc{BidenTherm} \hlstd{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(timeseries_2020}\hlopt{$}\hlstd{V201151)))}
-\hlstd{anes_svy} \hlkwb{=} \hlstd{anes_svy} \hlopt{%>%}
-    \hlkwd{mutate}\hlstd{(}\hlkwc{TrumpTherm} \hlstd{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(timeseries_2020}\hlopt{$}\hlstd{V201152)))}
+\hlstd{timeseries_2020}\hlopt{$}\hlstd{BidenTherm} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(}
+  \hlstd{timeseries_2020}\hlopt{$}\hlstd{V201151))}
+\hlstd{timeseries_2020}\hlopt{$}\hlstd{TrumpTherm} \hlkwb{=} \hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(}
+  \hlstd{timeseries_2020}\hlopt{$}\hlstd{V201152))}
+\hlstd{anes_svy}  \hlkwb{=} \hlstd{anes_svy} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{BidenTherm} \hlstd{=}
+\hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(timeseries_2020}\hlopt{$}\hlstd{V201151)))}
+\hlstd{anes_svy}  \hlkwb{=} \hlstd{anes_svy} \hlopt{%>%} \hlkwd{mutate}\hlstd{(}\hlkwc{TrumpTherm} \hlstd{=}
+\hlkwd{as.numeric}\hlstd{(}\hlkwd{as.character}\hlstd{(timeseries_2020}\hlopt{$}\hlstd{V201152)))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -920,7 +1140,7 @@ Box Plot                                                         & svydesign  & 
     \hlstd{V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-45-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-64-1} 
 \end{knitrout}
 
 \end{frame}
@@ -933,7 +1153,7 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \hlkwd{ggboxweight_svy}\hlstd{(anes_svy, BidenTherm)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-46-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-65-1} 
 \end{knitrout}
 
 \end{frame}
@@ -943,11 +1163,11 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggboxweight2d}\hlstd{(timeseries_2020, BidenTherm,}
-    \hlstd{gender, V200010a)}
+\hlkwd{ggboxweight2d}\hlstd{(timeseries_2020,}
+    \hlstd{BidenTherm, gender, V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-47-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-66-1} 
 \end{knitrout}
 \end{frame}
 
@@ -955,11 +1175,11 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggboxweight2d_svy}\hlstd{(anes_svy, BidenTherm, gender)} \hlopt{+}
-    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Biden Feeling Thermometer by Gender"}\hlstd{)}
+\hlkwd{ggboxweight2d_svy}\hlstd{(anes_svy, BidenTherm,}
+    \hlstd{gender)} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Biden Feeling Thermometer by Gender"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-48-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-67-1} 
 \end{knitrout}
 
 \end{frame}
@@ -968,11 +1188,12 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggboxweight3d}\hlstd{(timeseries_2020, BidenTherm,}
-    \hlstd{rightwrongtrack, gender, V200010a)}
+\hlkwd{ggboxweight3d}\hlstd{(timeseries_2020,}
+    \hlstd{BidenTherm, rightwrongtrack,}
+    \hlstd{gender, V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-49-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-68-1} 
 \end{knitrout}
 
 \end{frame}
@@ -981,11 +1202,12 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggboxweight3d_svy}\hlstd{(anes_svy, BidenTherm, rightwrongtrack,}
-    \hlstd{gender)} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Biden Feeling Thermometer by Gender"}\hlstd{)}
+\hlkwd{ggboxweight3d_svy}\hlstd{(anes_svy, BidenTherm,}
+    \hlstd{rightwrongtrack, gender)} \hlopt{+}
+    \hlkwd{ggtitle}\hlstd{(}\hlstr{"Biden Feeling Thermometer by Gender"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-50-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-69-1} 
 \end{knitrout}
 
 \end{frame}
@@ -999,24 +1221,25 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
     \hlkwd{facet_grid}\hlstd{(}\hlkwc{rows} \hlstd{=} \hlkwd{vars}\hlstd{(gender))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-51-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-70-1} 
 \end{knitrout}
 
 \end{frame}
-
+\begin{frame}{Any Questions?}
+\end{frame}
 \section{Using ggsurvey for histograms}
 \begin{frame}{Histograms in ggsurvey}
-We will work with Trump'a feeling thermometer question to make histograms. Recall that
+We will work with Trump'a feeling thermometer question to make histograms.
 \begin{table}[]
 \begin{tabular}{|l|l|l|}
 \hline
 Plot type                                                        & Data type  & ggsurvey function                     \\ \hline
-Histogram                                                        & data frame & gghistweight(df, x, weights, binwidth)          \\ \hline
-Histogram                                                        & svydesign  & gghistweight\_svy(surveyobj, x, binwidth)       \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & data frame & gghistweight2d(df, x, y,weights, binwidth)      \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & svydesign  & gghistweight2d\_svy(surveyobj, x, y, binwidth)  \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & data frame & gghistweight3d(df, x, y,z weights, binwidth)    \\ \hline
-\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & svydesign  & gghistweight3d\_svy(surveyobj, x,y,z, binwidth) \\ \hline
+Histogram                                                        & data frame & gghistweight(df,x,weights,binwidth)          \\ \hline
+Histogram                                                        & svydesign  & gghistweight\_svy(surveyobj,x,binwidth)       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & data frame & gghistweight2d(df,x,y,weights,binwidth)      \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 1 Facet\end{tabular} & svydesign  & gghistweight2d\_svy(surveyobj,x,y,binwidth)  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & data frame & gghistweight3d(df,x, y,z,weights,binwidth)    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Histogram\\ with 2 Facets\end{tabular} & svydesign  & gghistweight3d\_svy(surveyobj,x,y,z,binwidth) \\ \hline
 \end{tabular}
 \end{table}
 \end{frame}
@@ -1029,7 +1252,7 @@ Histogram                                                        & svydesign  & 
     \hlstd{V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-52-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-71-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1043,7 +1266,7 @@ Try a binwidth of 5.
     \hlstd{V200010a,} \hlkwc{binwidth} \hlstd{=} \hlnum{5}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-53-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-72-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1057,7 +1280,7 @@ Try a binwidth of 10. This is what I prefer, and will use in the next plots.
     \hlstd{V200010a,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-54-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-73-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1067,10 +1290,11 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghistweight_svy}\hlstd{(anes_svy, TrumpTherm,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
+\hlkwd{gghistweight_svy}\hlstd{(anes_svy, TrumpTherm,}
+    \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-55-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-74-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1080,11 +1304,12 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghistweight2d}\hlstd{(timeseries_2020, TrumpTherm,}
-    \hlstd{gender, V200010a,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
+\hlkwd{gghistweight2d}\hlstd{(timeseries_2020,}
+    \hlstd{TrumpTherm, gender, V200010a,}
+    \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-56-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-75-1} 
 \end{knitrout}
 \end{frame}
 
@@ -1096,7 +1321,7 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
     \hlstd{gender,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)} \hlopt{+} \hlkwd{ggtitle}\hlstd{(}\hlstr{"Biden Feeling Thermometer by Gender"}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-57-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-76-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1105,11 +1330,12 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghistweight3d}\hlstd{(timeseries_2020, TrumpTherm,}
-    \hlstd{rightwrongtrack, gender, V200010a,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
+\hlkwd{gghistweight3d}\hlstd{(timeseries_2020,}
+    \hlstd{TrumpTherm, rightwrongtrack,}
+    \hlstd{gender, V200010a,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-58-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-77-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1122,7 +1348,7 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
     \hlstd{rightwrongtrack, gender,} \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-59-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-78-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1136,12 +1362,13 @@ Recall that we stored the survey design object for th ANES in anes\_svy.
         \hlkwc{binwidth} \hlstd{=} \hlnum{10}\hlstd{)} \hlopt{+} \hlkwd{facet_grid}\hlstd{(}\hlkwc{rows} \hlstd{=} \hlkwd{vars}\hlstd{(gender))}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-60-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-79-1} 
 \end{knitrout}
 
 \end{frame}
 
-
+\begin{frame}{Any Questions?}
+\end{frame}
 \section{Using ggsurvey for Hexplots}
 
 \begin{frame}[fragile]{Motivation for Hexplot}
@@ -1153,7 +1380,7 @@ Sometimes you have multiple data points that overlap.  When we plot the Trump Fe
     \hlkwc{y} \hlstd{= TrumpTherm))} \hlopt{+} \hlkwd{geom_point}\hlstd{()}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-61-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-80-1} 
 \begin{kframe}\begin{alltt}
 \hlkwd{nrow}\hlstd{(timeseries_2020)}
 \end{alltt}
@@ -1174,7 +1401,7 @@ A hexplot creates bins of data that is close to overlapping and the intensity of
     \hlkwc{y} \hlstd{= TrumpTherm))} \hlopt{+} \hlkwd{geom_hex}\hlstd{()}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-62-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-81-1} 
 \end{knitrout}
 
 
@@ -1205,7 +1432,7 @@ In example 16 we did not account for the survey weights, but gghexweight does.
     \hlstd{TrumpTherm,} \hlkwc{weight} \hlstd{= V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-63-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-82-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1217,10 +1444,11 @@ In example 16 we did not account for the survey weights, but gghexweight does.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghexweight_svy}\hlstd{(anes_svy, BidenTherm, TrumpTherm)}
+\hlkwd{gghexweight_svy}\hlstd{(anes_svy, BidenTherm,}
+    \hlstd{TrumpTherm)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-64-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-83-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1230,11 +1458,12 @@ In example 16 we did not account for the survey weights, but gghexweight does.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghexweight2d}\hlstd{(timeseries_2020, BidenTherm,}
-    \hlstd{TrumpTherm, gender,} \hlkwc{weight} \hlstd{= V200010a)}
+\hlkwd{gghexweight2d}\hlstd{(timeseries_2020,}
+    \hlstd{BidenTherm, TrumpTherm, gender,}
+    \hlkwc{weight} \hlstd{= V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-65-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-84-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1245,11 +1474,11 @@ In example 16 we did not account for the survey weights, but gghexweight does.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghexweight2d_svy}\hlstd{(anes_svy, BidenTherm, TrumpTherm,}
-    \hlstd{gender)}
+\hlkwd{gghexweight2d_svy}\hlstd{(anes_svy, BidenTherm,}
+    \hlstd{TrumpTherm, gender)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-66-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-85-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1259,12 +1488,12 @@ In example 16 we did not account for the survey weights, but gghexweight does.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghexweight3d}\hlstd{(timeseries_2020, BidenTherm,}
-    \hlstd{TrumpTherm, gender, rightwrongtrack,}
-    \hlkwc{weight} \hlstd{= V200010a)}
+\hlkwd{gghexweight3d}\hlstd{(timeseries_2020,}
+    \hlstd{BidenTherm, TrumpTherm, gender,}
+    \hlstd{rightwrongtrack,} \hlkwc{weight} \hlstd{= V200010a)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-67-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-86-1} 
 \end{knitrout}
 
 \end{frame}
@@ -1275,11 +1504,11 @@ In example 16 we did not account for the survey weights, but gghexweight does.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{gghexweight3d_svy}\hlstd{(anes_svy, BidenTherm, TrumpTherm,}
-    \hlstd{gender, rightwrongtrack)}
+\hlkwd{gghexweight3d_svy}\hlstd{(anes_svy, BidenTherm,}
+    \hlstd{TrumpTherm, gender, rightwrongtrack)}
 \end{alltt}
 \end{kframe}
-\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-68-1} 
+\includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-87-1} 
 \end{knitrout}
 
 \end{frame}
