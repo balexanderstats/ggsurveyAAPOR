@@ -56,7 +56,8 @@
 AAPOR 2022 Short Course}
 \author{Brittany Alexander Ph.D. \\
 Associate Statistician \\
-Ipsos Public Affairs}
+Ipsos Public Affairs \\
+Twitter: @balexanderstats}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -93,7 +94,7 @@ Ipsos Public Affairs}
 \end{frame}
 
 \begin{frame}{RCloud Setup}
-Go to \href{https://rstudio.cloud/project/3797940} and create a free account. This will give you access to an R Studio project with all the course materials pre-installed.
+Go to \href{https://rstudio.cloud/project/3797940}{R Cloud Link} and create a free account. This will give you access to an R Studio project with all the course materials pre-installed.
 \end{frame}
 
 \section{Introduction to ggplot2 and ggsurvey}
@@ -1035,10 +1036,10 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
 \hlstd{plot10Atext} \hlkwb{=} \hlkwd{ggbarcrosstabs3d}\hlstd{(timeseries_2020,}
-    \hlstd{rightwrongtrack, economy, gender,}
-    \hlstd{V200010a,} \hlkwc{labeller} \hlstd{=} \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,}
-        \hlkwc{multi_line} \hlstd{=} \hlnum{TRUE}\hlstd{))} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
-    \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
+\hlstd{rightwrongtrack,economy,gender, V200010a,}
+\hlkwc{labeller} \hlstd{=} \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,} \hlkwc{multi_line} \hlstd{=} \hlnum{TRUE}\hlstd{))} \hlopt{+}
+  \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}
+    \hlkwd{str_wrap}\hlstd{(x,} \hlkwc{width} \hlstd{=} \hlnum{10}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -1077,11 +1078,11 @@ We can use the stringr package to use text wrapping for the labels on the bars.
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{ggbarcrosstabs3d_svy}\hlstd{(anes_survey,}
-    \hlstd{rightwrongtrack, economy, gender,}
-    \hlkwc{labeller} \hlstd{=} \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,}
-        \hlkwc{multi_line} \hlstd{=} \hlnum{TRUE}\hlstd{))} \hlopt{+} \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)} \hlkwd{str_wrap}\hlstd{(x,}
-    \hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{))}
+\hlkwd{ggbarcrosstabs3d_svy}\hlstd{(anes_survey, rightwrongtrack, economy}
+\hlstd{, gender,}  \hlkwc{labeller} \hlstd{=}
+  \hlkwd{label_wrap_gen}\hlstd{(}\hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{,} \hlkwc{multi_line} \hlstd{=} \hlnum{TRUE}\hlstd{))} \hlopt{+}
+  \hlkwd{scale_x_discrete}\hlstd{(}\hlkwc{labels} \hlstd{=} \hlkwa{function}\hlstd{(}\hlkwc{x}\hlstd{)}
+    \hlkwd{str_wrap}\hlstd{(x,} \hlkwc{width} \hlstd{=} \hlnum{3}\hlstd{))}
 \end{alltt}
 \end{kframe}
 \includegraphics[width=0.95\linewidth]{figure/unnamed-chunk-62-1} 
@@ -1521,6 +1522,8 @@ In example 16 we did not account for the survey weights, but gghexweight does.
 \item In general ggsurvey is compatiable with most "add-on" functions from ggplot2 and related packages  (change color scheme, scales, titles), except geoms and facet\_grid.
 \item ggplot2 and ggsurvey provide an open source way to create high quality visualizations of complex survey data
 \item \href{https://github.com/balexanderstats/ggsurvey}{package website to download on your machine and follow updates}
+\item \href{https://github.com/balexanderstats/ggsurveyAAPOR}{Copy of Course Materials}
+
 \end{itemize}
 \end{frame}
 

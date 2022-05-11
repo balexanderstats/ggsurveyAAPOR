@@ -6,7 +6,8 @@
 AAPOR 2022 Short Course}
 \author{Brittany Alexander Ph.D. \\
 Associate Statistician \\
-Ipsos Public Affairs}
+Ipsos Public Affairs \\
+Twitter: @balexanderstats}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -42,7 +43,7 @@ Ipsos Public Affairs}
 \end{frame}
 
 \begin{frame}{RCloud Setup}
-Go to \href{https://rstudio.cloud/project/3797940} and create a free account. This will give you access to an R Studio project with all the course materials pre-installed.
+Go to \href{https://rstudio.cloud/project/3797940}{R Cloud Link} and create a free account. This will give you access to an R Studio project with all the course materials pre-installed.
 \end{frame}
 
 \section{Introduction to ggplot2 and ggsurvey}
@@ -85,6 +86,7 @@ Go to \href{https://rstudio.cloud/project/3797940} and create a free account. Th
 \end{itemize}
 <<echo=FALSE, warning = FALSE, message=FALSE>>=
 knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.width = 6, fig.asp = .5, out.width = "95%",tidy.opts=list(width.cutoff=30), tidy = TRUE)
+knitr::knit_hooks$set(purl = knitr::hook_purl)
 @
 \end{frame}
 
@@ -672,8 +674,12 @@ plot10A
 
 \begin{frame}[fragile]{Example 10A: Add Text Wrap Labels}
 
-<<>>=
-plot10Atext = ggbarcrosstabs3d(timeseries_2020, rightwrongtrack,economy, gender, V200010a, labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 10))
+<<tidy=FALSE>>=
+plot10Atext = ggbarcrosstabs3d(timeseries_2020,
+rightwrongtrack,economy,gender, V200010a,
+labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +
+  scale_x_discrete(labels = function(x)
+    str_wrap(x, width = 10))
 @
 \end{frame}
 
@@ -696,8 +702,12 @@ ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender)
 
 \begin{frame}[fragile]{Example 10B: Text Wrap Labels}
 
-<<>>=
-ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy, gender, labeller = label_wrap_gen(width = 3, multi_line = TRUE)) +   scale_x_discrete(labels = function(x) str_wrap(x, width = 3))
+<<tidy=FALSE>>=
+ggbarcrosstabs3d_svy(anes_survey, rightwrongtrack, economy
+, gender,  labeller =
+  label_wrap_gen(width = 3, multi_line = TRUE)) +
+  scale_x_discrete(labels = function(x)
+    str_wrap(x, width = 3))
 @
 \end{frame}
 
@@ -973,6 +983,8 @@ gghexweight3d_svy(anes_svy, BidenTherm, TrumpTherm, gender, rightwrongtrack)
 \item In general ggsurvey is compatiable with most "add-on" functions from ggplot2 and related packages  (change color scheme, scales, titles), except geoms and facet\_grid.
 \item ggplot2 and ggsurvey provide an open source way to create high quality visualizations of complex survey data
 \item \href{https://github.com/balexanderstats/ggsurvey}{package website to download on your machine and follow updates}
+\item \href{https://github.com/balexanderstats/ggsurveyAAPOR}{Copy of Course Materials}
+
 \end{itemize}
 \end{frame}
 
